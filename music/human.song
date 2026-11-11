@@ -1,0 +1,183 @@
+# RE: in CARNATION 人の候補「陽気なゆったり」（2026-11-07）。A・ブリッジ・B の 20 小節で 1 周（サビは作ったが、B まででまとまるので外した）。ヘ長調、テンポ 132（2026-11-08 に 112 → 126 → 132）、跳ねるリズム（付点 8 分＋16 分）
+# 和音 F Dm Gm7 C7 | F A7 B♭ C7。てくてく歩く村の朝
+# メロディは 25% の鼻歌のような跳ねる句（mel2 の D）: 奇数の小節は同じ音を跳ねて叩いて上へ、偶数の小節は休みで弾んで和音を跳び上がる
+#   音色は木琴のようにはじいてすぐ消える popi（2026-11-08。スタッカート）
+# 矩形波 2 は低めの 50% が跳ねるリズムで和音をころころ上下する（kororo。wafu の分散和音の厚みを、跳ねたまま）
+# ベースは三角波が付点 8 分＋16 分で同じ音を 2 回ずつ短く（タッタ・タッタ）、ドラムは跳ねるハイハットと 2・4 拍目の小さなスネア
+# ブリッジ（9〜12、2026-11-08）: 和音 Dm7 Gm7 Am7 | B♭ C。A の「同じ音を叩く」頭から長く伸ばす音へ、1 段ずつ昇って B へ
+#   9 小節からノイズのキック、11 小節から 2 本目のメロディの重ね（少し小さく）。12 小節は連打なしでそのまま B へ
+#   メロディの音色は 9 小節で少しだけ余韻の残る popi-chu、11 小節から B の popi-nobi（短い → 少し長い → 長い）
+# B（13〜20、2026-11-08）: 和音 B♭ C Am7 Dm | Gm7 Am7 B♭ C7 → 頭の F へ。厚く、少し長く
+#   メロディは跳ねる付点の拾いから長く伸ばす音へ（popi-nobi、少し余韻が残る）。13〜15 小節で同じ形が 1 段ずつ昇る
+#   矩形波 2 がメロディを 1/8 半音ずらして重ねる（popi-nobi-d）。ベースは少し長く（q6）
+#   ドラムはノイズのキック 1・3 拍目、スネア 2・4 拍目。13・17 小節の頭にシンバル
+#   B 2 回目（17〜20）は 2 本目を 1/4 半音ずらし、2 本とも深く揺らす（popi-yure・popi-yure-d2）
+# DPCM（2026-11-08）: 組み込みのキック c とスネア d（録音の打楽器のサンプルも入っているが、今は使っていない: c+ ボンゴ低、d+ ボンゴ高、f+ ウッドブロック、g+ クラベス、a+ 手拍子、e シェイカー、g タンバリン）
+#   A メロとブリッジ（1〜12 小節）は無し。B メロの 13 小節から、キックと 2・4 拍目のスネア
+#   区切りの連打は無し（12・16・20 小節の連打は 2026-11-08 に外した。ノイズも DPCM も B メロのふつうの刻みのまま頭へ）
+title HUMAN
+tempo 132
+mode famicom
+instrument 0 hanauta @1 q6 ~6,10,24
+  v: 12 14 13 | 12 / 9 5 2 0
+instrument 1 chakka @2 q8
+  v: 10 7 4 2 | 1 / 0
+instrument 2 tsun @1 q3
+  v: 12 14 13 | 12 / 9 5 2 0
+instrument 3 popi @1 q8
+  v: 14 12 9 6 4 2 1 | 0
+instrument 4 pitto @1 q5
+  v: 14 13 11 9 | 8 / 4 2 0
+instrument 5 popi-d @1 q8
+  v: 14 12 9 6 4 2 1 | 0
+  p: 1 | 1
+instrument 6 kororo @2 q8
+  v: 9 6 4 2 1 | 0
+instrument 7 popi-nobi @1 q8
+  v: 14 12 10 9 8 7 7 6 6 5 | 5 / 3 1 0
+instrument 8 popi-nobi-d @1 q8
+  v: 14 12 10 9 8 7 7 6 6 5 | 5 / 3 1 0
+  p: 1 | 1
+instrument 9 popi-chu @1 q8
+  v: 14 12 10 8 7 6 5 4 3 | 3 / 2 1 0
+instrument 10 popi-nobi-d2 @1 q8
+  v: 14 12 10 9 8 7 7 6 6 5 | 5 / 3 1 0
+  p: 2 | 2
+instrument 11 popi-yure @1 q8 ~14,16,6
+  v: 14 12 10 9 8 7 7 6 6 5 | 5 / 3 1 0
+instrument 12 popi-yure-d2 @1 q8 ~14,16,6
+  v: 14 12 10 9 8 7 7 6 6 5 | 5 / 3 1 0
+  p: 2 | 2
+part 0 @i0 v10
+part 1 @i1 v6
+part 2 q7
+part 3
+part 4
+sample bongo-low note c+ rate 15 data qcaqiaou1vUGzwaU1/9tKgUAAAC8/T+qv/X3/5dESkUAAAAAAP////+/pqquJJKqqiQBQIQg/f/u7t9327YSQgAABEDU+/7+/1WqqVUSqSpFQWAp0Lb//79rJUmEJAAQqaqq3e+2/ftuFUFIJKlUhRBVq0lte/f777YCAJGUqKpSUrW7lqq2u2utlhKRVJVSUiSparutbfd7KxGJCElVrUqlUqutra1Vrd2KiKRSqapWJZWq2rZtW1O1WooQSalqtWpVVVVr1VqrSqpapSRJtapWVVVVa9vWqpVEIiUlKbVut1a1VlPVqipVlVJSVVWpVlWVUmq7bVtrKkmSkpRqra1Vq1RS1WrbqkpKSqmqqkprrVWrVVXVqlZKJCJV1drWqlatqqpqVVWtVkokklJVa61W1da2alVVJSmlklJVtVrVWlWlqlq11lqVJEkpVVVba1VVVaWqWtWqVlWSUlWtqkpVVVVr1aqqVZUqpaRSbW21qkqVSrVaVVWtqlSpVFXVWlVVVaqqqtWqqlIllWq1arWqqlKpUtWq1qpUqVKpWm2tqlWqVKpVVZWqqlSpqqq1ttVKVUqpqlatVKpUqapqtVprtVQppVK1VqtSqVRVVVVVq9aqqlK1qqoqlVJKtVqrtaqqSpVKVau1VVUqKSlVq9Vaq1pVKZWqqlWlKlVVtapVVVVVqqqqarValUpKqWq1Wq0qVaWqqlS1Wq2qKlWqWlVVVapUVVWrqlVVVVWqqmq1WlWllFKqqmrValWtqlRVq6qqVKVKVVVVraqqqqpatVpVVSqlUqqqVataVVVVqqpataqqUqUqVa2qqqqqqqpW1aqqKpVKVVWtVtVSpaqqqqpWq6pKlapUrapVVaWqqqpVVVVVVaqqqqpVVVWpqtSqalWtqkqVKlWtalVVVVWqqqqqVlVVVZWqqlVVlaqqqqpaVVVVVamqqqpWVVVVpaqqqqpaVVVVlaqqqqpVVaqqqlVVVVVVpaqqqmpVVVWpqqpqVVVVVVWqqqqqalWVqlpVVVVVVVWlqqqqqqpVVVVVVVVVVVWpqqqqqqqqqlZVVVVVVVVVlaqqqqqqqqqqalVVVVVVVZWqqqqqalVVVVWVVVVVVVWVqqqqqqpaVaWqqqpWVVVVVamqqqqqqqqqqqqqalVVVVWqqqpaVVWVqqqqqqpVVVVVlaqqqlZVVZWqqqpqVVVVqmpVVVVVVVWqqqqqqmpVVVVVVVVVVVVVqqqqqqqqWlVVVVVVVVVVqaqqqqqqVlVVVVVVqlpVVVWpqqqqqmpVVVVVVVWpqqqqqqqqqqpWVVVVVVVVqqqqqqqqqqqqVlVVVVWVqqqqqqqqqqqqalVVVVVVVamqqqqqqqqqqqqqVqlWqaqqqqqqqlVVVVVV
+sample bongo-high note d+ rate 15 data KjammOfM9/8BVwAAAKD//z8V1QfS///vAgAAAACA//////8BAAAAgP//f0m1JKL7fbcqIQAAAkj/////X4kAAJBarbcVJK0S9G99r/9bCAAAAGj3//9/CwAAyKq6/7+rhIgIkLL6/u9qKQSCpKS9/3srkgQEILX2/9/bVgQAAZLa3r39VilBiKrdtnurIgIEorp773u3SgSESKnV3nvbkhAQktTu//uthEAQhFJrf3/XSikREFGt+33XUhIhhGTdvXetqhIhIqW2t7u2SkmEKLW6vd2WSoIQSand9/uukggQImm9d7etKhGJkqq227ZWJYlIUq3ddtuqpEiklGpt27VVSUSUUm3b7raqJJKUKlVra1tLSUqpqmrtbqskEUlKre22rVVKKZWSUlVr21pVVUqSqtra1qpUSklJVa1aq7XVqpKUUqpqba1VpSSlVLXabWtVSpJSSqm2batVValSSlXVqrUqVVVKqmpra6sqpSRJqtq2trWqSiVJqWrVqlVVVaVSVavVWlWqlFKqqrW1VpVKqVRVtWrVqqpUpUpVrapVraoqlVJVVa1qVVXVqqoqVapSVbWqVVVVpapVVVVVlaqq0qpVrapUqlRVtVq1qlUqqVSqVq3Waq1UkqRUtVZba7VSSUmlatWq1aqqUipVVbW2VlWlJKVU1dpuraqkpJSqqta2VqVKpVRVtWqtWqlSSinVqrVtrapKSlJK1Wqt1WpVKpVSpdVaa61SSpKUam3b1qoqKSWlqqq11qqqSqlUVa3WalWqlJKqqlZra1VVJaVUadWqVasqlUpVVa1Vq1VVSkmpqmprrValUqlUVatWtSpVlaoqVatq1apSVamq0qpaVVVVpaqqqqpVVVVVlaqqqqpaVVVVVamqqqpaVVVVlaqqqlpVVVVVqqqqqqpWVVVVVaWqqqqqVlVVlaqqqlpVVVVVqqqqqlpVVVVVpaqqqlZVVVVVqaqqqlZVVVWlqqqqqlVVVVVVVVWpqqqqWlVVlapqqqpVVVWlqqqqqqpaVVVVVamqqqpaVVVVVamqqqpqVVVVVZWqqqqqVlVVVVVVqaqqalVVVVWpqqqqalVVVVVVlaqqqqqqWlVVVVVVVVVVlaqqqqqqqlVVVVVVqaqqqqqqVZWqqqqqqlZVVVVVqqqqqlpVVamqqlVVVVWpqqqqqqpqaVVVVVWlqqqqWlVVVVVVVaqqqqqqqqqqqqqqVQ==
+sample woodblock note f+ rate 15 data FX6YNO8CXG8VoP8LgP4PgP4nAP8XAP8dgPE/wOH/AfD/A+D+AOD/AeD/A8D/B4D/A4D/DwD+DwD/HwD+HwD+HwD8HwD4/wD8PwD+HwD+DwD+HwD/HwD8PwD8fwD4PwHg/wNI+/IBXP8AsR9L0O8GLP0Cif+QoP8F4P8EmP4F4F8O4PsBdPUHiP/CAttfAO1fgPSrC/B1CVz3CNpeaGJ7jOIdUedRobtG5NaqwJ8OaK8FpXchw3/A8OsE8u4Cqv0SSP8UQt82wPorkPRPUPqsCbp6pLS6wtJNVknbitRVNWK7kqZ4K6pKd0GtNlVSz0rUaq2ktFVVqsYtqSW9Jai9VUD9rQD1bwL4TyFqXyHVugVV3UlFbXZBLS9VordK1NUGVfuIaH0lsL2pkPoTwu6WkLaXKLUnRW6rhG6biK2bKNVbItqtIrW1UlLbSrRqLcpaVZWq6lJJXVUlq66k1K6U1NZK1GpLSmtLpapVpapVlapVqapWlapWVapaValqVZmqWlWqVqWqVZVqVaWqVqWqVaWqVZWqVaWqVpWqVlWqVpWqWlWqVlWqVlWqWpWqammlmqpVpapVpapVlapVpapVlapWpapWVapVpapWpapVqapWpapWVapWVapaVWqpValqVaWqVaWqVZWqVZlqpaqqqqqqVVVVVVVVVVVVVVVVVVVV
+sample claves note g+ rate 15 data Kac+OJ7kDI6Hww/of+B8AD+Afx7Oh+ME/A34GfA/MD8AH8bHxeH4mPgcOB+kT8Fv4HYBPw7eBfWRzFP4ONxwWlacBz7qg+fA54DP4HwA/wj+A/4D8CN8jckzclUWL6qH0UfwM3gdVB+MH0ofRY8N68Lq8HA8Gh8cH8aH0gvTK9h1cHqIvoTXEvZi4jWsVVlqORZPpubCOsbD1rBWajxqOpY8FjsTOxOnk2a6cJYenC4qT0PXFG0ttLYk25TsBu0KreXQw2WqTiY3xdYM3gGfC6ujw1UVvZi8FJdO8fDQYzqyOrJWg6/C5cK6yFPJU1xalo68JD4Oz8HxwfGhPFxWxo7K1eAr0q7QVaqVpaVlqWWpVqouKi/SU+FT0emwOmyppZaaDi+s5VBv0K7IVcmVmlVqNqxOrI2ajsNjqWnpaHwYPZaWValWpWZVWla0S8pVqdak2qhmZeqkWpaWpaWllqplaallaVapViVbJVulWqVqlWqlqqVpWalVWpaVmlWqWalWWlpWqVapVqlWlVpValWqVaZWpaZlaZVqWVqZWqVWmVqmllalVqVplaqVqlWpVWlZaVZaVqaWplalZaVaaWmlVpZalaqVqpVqlWpValWqVapWpVWpVqappaVWqWqpalVqVaqVmpWWVWqpqqqqqqqqVVVVVVVVVVVVVVVVVVVV
+sample clap note a+ rate 15 data Wqx4Z+QYnhq8H4Af+AMP/uCH4ZOljqpaqTVVcpWaaZVqpVZWWqVapVqVqlVapVpValUV3qSL1DWmFbuollaqVZWmVqk1sVVVqU6pqlZpZVVqVapaVZW0S6wrSVeVaqlVqVqlVmWVqqVaqZZplZZaqZWqVVWqlWqpVqWqWamV2qSWVlmpVqWWWqqTqlZqpVppqlWVVmmlVmqVqlWqVWqValWVlmqplWqlWqlVqlVaVqqlllalppWVapWqWqWVWqVWqlZqlapqVapVpapqpVWqlVaZqpWlVqlapWqVlqpVpVapVVqlVqpapValWqlZpVqVWqlWVWmlWqlZWqWVqlaqapVWqVaVWqlZpVqlapVaVaWqValapapWWpVqVVmpVpVqVamVVqpalVZalVpaVapWpValVapaqVWpWqlWaZVaVqVVqVapVpVqVWpVpVaqWqWmVqqVWqpWpapaqVZppapVpZZaVaWWalWlVmqlmpWqWqWWqqlWqVqpaqWqaqqVqlWqqlWqWqqpqqpqaaWWqmqpqpZaaqWmqqqqqqVqqqaWqqqmqqqqaqVaaqVapVaqaqWqWqpWaqmVqmqpVqZqVqpWqmmqWqVqpaqqaqlqlaqWqpVqqaqmaqqlqqqaqqaaqqaqqqaqqqqqqmqqapWqlapqqaqlqmqlqqqqWqqlWqVqlapWqqqlWqqqllqqpaqWmqmqpaVaqaWqVqmplVqppZZWapqpVqqqpZZqVaWVWmlVqVaqValWqqqqVqpqqaqmapVWqZVaWqmVVmqVWlpaqaqlplqpWqmWpZpqaaqVVlqlllZpqVValVZppVqVqlWpapWqlmqpZqVaqVqqVmqVqlVapZVaqlWlVqlWVVVVaZVaVqlVlZpqqVVpVZWqVqWqqlZqVVVVqWqlmqqqqmqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpVVVVVVVVV
+sample shaker note e rate 15 data VFVVVdWqqqqqqqpVVVVVVauqqqqqqqqqqqpWlVVVtZplskpumSWXbJJOm2SZ0mat2TTbJknaLUtyk5Jmmm2abIspaayVVrVSmmxaM021wiyTSrZLW8mkS5JpayWtlWQrlTbaLLJMVkveos1SqjWZUkprrUk3yTbLkmXSSZN5y0SSzVrWaWbRNpop2WqpNMk2yjbbJEk2Z6ts1JgzbJtkl6LNuJQ6ZymXakzGmyadOHMkLdtW0rJJ0m0zybbJmtksqWw1yTbJVrJMuiXNNstMk6TWWbJN2iizbLIlW9K1SdKsc5Jk2WaWZZJty6SRZWaaNs00yyTLTGecWDZZrfAkk2aprSaZtFNLNpVss00jm6SZY6aZNlMss05Nm2yWWdIc05Rp5tqoNcwZa9MmSaeT3HLJNMtsqdVSrFk5li2baJYZtwx5cpktU85U49i0nGaJ3TLDLFm2LVmyrFpsybJlzFrSLMtyylHrJNsyyZNltlkybUo5yyzRNJNs00wmnWRLs23RpDXaJLnNti1SmihrVqlZxqxWk+xkmcaSS7YlTdlSZlqqadKqbMqcLLOsssxasqWZcqaZNmZZZtbM0qyabJpmKueUVkqzyTbNpFlqpdlimWZTZZNNU02WWVVWNbNUTTNNlS3VTFnTMlXWVE051UxVlmmWlmlmWWamWZVVVmVVVlVVZVVVVVVVVVZZWVVVVVVVVVVVVWVVVVVVlVVVlVVVVaVZlaVaapWWZVZZlWWVVlVVVVlWVVVlVZVlmWVVqqmqqqpVVVVVVVVVVVVVVVU=
+sample tambourine note g rate 15 data WZnFY+lwY1paVlnyxGM8jo7yOHL4yLJ58PA4nHFc8ejhJH7gcfToMSzM8zjKHofj4RmOcbQch3WOw+FxeDzpMFwezzLDOA7Ppsm2SZZNjkMbp02TbZZNk2WbJA9Dh0uOax4PlmUZjptHOE4bj2PYNI7psmmmy/C4ZINtm2SbRhkuH5bHNGZcZssm6RhPsmmSZtsm2TRNs0yyLNsmWbYcpnmWSZY5TuPYZLh0HNtsMkyTbJssnieZJhzHjeOMw6aPo8Myj+Ms24bjFAfTNOtokyybLJcN0zmGOeZ5jjhtsix5Nk1x2DxNlmQ4fhxPkjxcU5wtkzQPy4Y5y7ZNk4ajbZKkWZacabo0L9m2DZLl4bHcJNmyLMs2TTbLNEmSZdm2wabLJkmSZ5tmGTZdhqfJsk2bJkm2Lcsm2yRx5jiMsyxznnkcSw7jmOcYw7LDkccZxy6HTYZptk0eD4ejSbLM0zR5HgeOaT4NjuM8M5bnGKZNkj3HGJ4HjxkOz+NJHo9l02CcM8yzDLMMexw+HC4PHm02yR7HWSbJtkmWbRLneJZx2Hg4eTh03DRbNMtyDJssPhtMm0yedY6xZHkcZtJ5NBk2T48Hjk/jMCybhvNM8mjSPOc4hmnT4fBxsOU45hlmGaZJni3LJsumiyeHk6bD8TRNhvlsMmySnTZZPI4xyzTLpplhuG0cyzTpPGyeRZMsS5Zp2rZJhs3xaLhk2XQ8yjzDMdYsj2HHOcZxzBMOn4aHy2w5LB8eB5smHw7Lhtk2eVTyeBaZZllmOM8Yx3myLONoskyXTeMppg3HscUazzBPGQ+nnGMcsy1aHMdZNhxnWbNoWjxpMuc45jjOOI5ZljmcchznWLZMsmyWxePo8OThpHGyxZlmmeZYxnHKcdlwWbJswzRbJsdlWVqm4zhZHNs06ViWaepommmWaY6ZbFmmWaaZpmmaaZpllpmWZZZZpmmWWRrHqWVZppmmaaVpppmmlqWppqWlpaaZppWmlmWWpZZppmVZWpqmWZZpmmaaZpqZlqapqWWaWZZplpVlWZaVZplmWZammZZlpqmWppmlaaaZlmaaZZqWpZaWZZZaWpaaZpppmmaqqqqqqlVVVVU=
+
+bar 1 A
+  0: @i3 v11 o5 a8. a16 a8. g16 >c4 <a4
+  1: @i6 V15 v6 o4 f8. a16 >c8. <a16 f8. a16 >c8. <a16
+  2: q4 o2 f8. f16 a8. a16 >c8. c16 <a8. a16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 2
+  0: o5 d8. f16 r8. a16 r8. >d16 c4
+  1: o4 d8. f16 a8. f16 d8. f16 a8. f16
+  2: o2 d8. d16 f8. f16 a8. a16 f8. f16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 3
+  0: o5 b-8. b-16 b-8. a16 >d4 <b-4
+  1: o4 g8. b-16 >d8. <b-16 g8. b-16 >d8. <b-16
+  2: o2 g8. g16 b-8. b-16 >d8. d16 <b-8. b-16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 4
+  0: o5 @p8 e2 @p g8. b-16 >c4
+  1: o4 e8. g16 b-8. g16 e8. g16 b-8. g16
+  2: o2 c8. c16 e8. e16 g8. g16 b-8. b-16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v4 c+ c+ v5 c+ c+
+  4: r1
+bar 5
+  0: o5 a8. a16 a8. g16 >c4 <a4
+  1: o4 f8. a16 >c8. <a16 f8. a16 >c8. <a16
+  2: o2 f8. f16 a8. a16 >c8. c16 <a8. a16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 6
+  0: o5 c+8. e16 r8. a16 r8. >c+16 e4
+  1: o4 e8. g16 a8. >c+16 <e8. g16 a8. >c+16
+  2: o2 a8. a16 >c+8. c+16 e8. e16 c+8. c+16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 7
+  0: o5 f8. f16 >d8. c16 <b-4 >d4
+  1: o4 f8. b-16 >d8. <b-16 f8. b-16 >d8. <b-16
+  2: o2 b-8. b-16 >d8. d16 f8. f16 d8. d16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 8
+  0: o6 @p8 c2 @p <g4 r4
+  1: o4 e8. g16 b-8. g16 e8. g16 b-8. g16
+  2: o2 c8. c16 e8. e16 g8. g16 e8. e16
+  3: l16 @v2 o5 v3 f8. v2 f @v3 v5 c+8. @v2 v2 f v3 f8. v2 f @v3 v4 c+ c+ v5 c+ c+
+  4: r1
+bar 9 Br
+  0: @i9 v11 o5 a8. a16 f8. a16 @p8 >c2 @p
+  1: o4 d8. f16 a8. f16 d8. f16 a8. f16
+  2: q5 o2 d8. d16 f8. f16 a8. a16 f8. f16
+  3: l16 @v4 o4 v6 g8. @v2 o5 v3 f @v3 v5 c+8. @v2 v2 f @v4 o4 v6 g8. @v2 o5 v3 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 10
+  0: o5 b-8. b-16 g8. b-16 @p8 >d2 @p
+  1: o4 g8. b-16 >d8. <b-16 g8. b-16 >d8. <b-16
+  2: o2 g8. g16 b-8. b-16 >d8. d16 <b-8. b-16
+  3: l16 @v4 o4 v6 g8. @v2 o5 v3 f @v3 v5 c+8. @v2 v2 f @v4 o4 v6 g8. @v2 o5 v3 f @v3 v5 c+8. @v2 v2 f
+  4: r1
+bar 11
+  0: @i7 v11 o6 c8. c16 <a8. >c16 @p8 e2 @p
+  1: @i8 V15 v6 o6 c8. c16 <a8. >c16 e2
+  2: o2 a8. a16 >c8. c16 e8. e16 c8. c16
+  3: l16 @v4 o4 v8 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v8 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: r1
+bar 12
+  0: o5 @p8 b-2 @p >c8. <b-16 g4
+  1: o5 b-2 >c8. <b-16 g4
+  2: o2 b-8. b-16 >d8. d16 <c8. c16 e8. e16
+  3: l16 @v4 o4 v8 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v8 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: r1
+bar 13 B
+  0: @i7 v11 o5 d8. f16 @p8 b-2. @p
+  1: @i8 V15 v8 o5 d8. f16 b-2.
+  2: q6 o2 b-8. b-16 >d8. d16 f8. f16 d8. d16
+  3: l16 @v21 o5 v7 c4 @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 14
+  0: o5 e8. g16 @p8 >c2. @p
+  1: o5 e8. g16 >c2.
+  2: o2 c8. c16 e8. e16 g8. g16 e8. e16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 15
+  0: o5 a8. >c16 @p8 e2 @p d8. c16
+  1: o5 a8. >c16 e2 d8. c16
+  2: o2 a8. a16 >c8. c16 e8. e16 c8. c16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 16
+  0: o5 @p8 a2. @p r4
+  1: o5 a2. r4
+  2: o2 d8. d16 f8. f16 a8. a16 f8. f16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 17
+  0: @i11 v11 o5 d8. g16 @p8 b-2. @p
+  1: @i12 V15 v11 o5 d8. g16 b-2.
+  2: o2 g8. g16 b-8. b-16 >d8. d16 <b-8. b-16
+  3: l16 @v21 o5 v7 c4 @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 18
+  0: o5 e8. a16 @p8 >c2. @p
+  1: o5 e8. a16 >c2.
+  2: o2 a8. a16 >c8. c16 e8. e16 c8. c16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 19
+  0: o5 f8. b-16 @p8 >d2 @p c8. <b-16
+  1: o5 f8. b-16 >d2 c8. <b-16
+  2: o2 b-8. b-16 >d8. d16 f8. f16 d8. d16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4
+bar 20
+  0: o5 @p8 g2 @p e8. g16 b-4
+  1: o5 g2 e8. g16 b-4
+  2: o2 c8. c16 e8. e16 g8. g16 b-8. b-16
+  3: l16 @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f @v4 o4 v9 g8. @v2 o5 v3 f @v3 v6 c+8. @v2 v3 f
+  4: c4 d4 c8. c16 d4

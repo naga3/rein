@@ -1,0 +1,69 @@
+# 崩れる岩（人の道）。16 × 16 の一マス。乗っている間（しがみついている間）0.7 秒で崩れて消える足場。決まりは art/GROUP.md
+# まわりの岩（tiles/village）とはつながらない一つの塊（四方に輪郭 o）。色は village と同じ赤土（k・g・d）と小石（p・P）、上の縁に草（T・t・m・u）。ひびは o
+# block（ふだん）→ crack1（ひびが広がり、右の角が欠ける）→ crack2（ひびが全体に走り、割れかけ）。揺れとかけらはゲームが描く
+title crumble
+palette reincarnation
+color o 1
+color k 19
+color g 20
+color d 18
+color p 6
+color P 5
+color T 15
+color t 14
+color m 13
+color u 12
+
+pic block 16 16 "ふだん（ひびが少し）"
+  ..oooooooooooo..
+  .otTttTtttTtTto.
+  omtmmtmmmtmmmtmo
+  ogugggugggugggdo
+  oggkkkkkkkkkkkdo
+  ogkkpPkkkkkkkkdo
+  ogkkkkkkkkokkkdo
+  ogkkkkkkkokkkkdo
+  ogkkkkkkkokkkkdo
+  ogkkkkkkkkkkkkdo
+  ogkkkkkkkkkpPkdo
+  ogkkkkkkkkkkkkdo
+  okkkkkkkkkkkkddo
+  .odkkkkkkkkkddo.
+  ..oddddddddddo..
+  ...oooooooooo...
+
+pic crack1 16 16 "ひびが広がる（右の角が欠ける）"
+  ..oooooooooooo..
+  .otTttTtttTtTto.
+  omtmmtmmmtmmmtmo
+  ogugggugggugggdo
+  oggkkkkkkkkokkdo
+  ogkkpPkkkkokkdo.
+  ogkkkkkkkkokkdo.
+  ogkkkkkkkoookkdo
+  ogkkkkkkkokkkkdo
+  ogkkkkkkokkkkkdo
+  ogkkkkokokkpPkdo
+  ogkkkokkkkkkkkdo
+  okkkkokkkkkkkddo
+  .odkokkkkkkkddo.
+  ..oddddddddddo..
+  ...oooooooooo...
+
+pic crack2 16 16 "崩れる直前（ひびが全体に走り、割れかけ）"
+  ..oooooooooooo..
+  .otTttTttoTtTto.
+  omtmmtmmmotmmtmo
+  ogugggugggogggdo
+  oggkkkkkkkookkdo
+  ogkkpPkkkkokkdo.
+  ogkkkkkkkkokkdo.
+  ogkkkkooo.okkkdo
+  ogkoookkkokkkkdo
+  oookkkkkokkkkkdo
+  ogkkkkkkoooookdo
+  ogkkkkkko.kkkooo
+  .okkkkkkkokkkddo
+  ..okkkkkkokkddo.
+  ...odddddodddo..
+  ....ooooo.ooo...

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ステージエディタ - RE: in CARNATION</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #0d0b14; color: #c8c6d6; font: 13px/1.5 system-ui, sans-serif; overflow: hidden; }
+  body { display: flex; }
+  #view { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; position: relative; min-width: 0; }
+  #stack { position: relative; }
+  #stack canvas { position: absolute; left: 0; top: 0; image-rendering: pixelated; display: block; }
+  #c { position: relative !important; }
+  #o { cursor: crosshair; }
+  #edge { opacity: 0.35; pointer-events: none; }
+  /* まわりの矢印: 見た目は小さな三角、押せる所は大きめ（44 ドット四方） */
+  .edgeArrow { position: absolute; z-index: 3; transform: translate(-50%, -50%); width: 44px; height: 44px; border: none; background: transparent; color: #6a6880; font-size: 10px; line-height: 1; cursor: pointer; padding: 0; }
+  .edgeArrow.has { color: #ffe066; }
+  .edgeArrow:hover { color: #ffffff; }
+  #mode { position: absolute; z-index: 100000; top: 8px; left: 50%; transform: translateX(-50%); padding: 2px 10px; border-radius: 4px; background: #2e2c44; color: #dcdae6; white-space: nowrap; }
+  #mode.play { background: #8a2a2a; color: #fff; }
+  #toast { position: absolute; z-index: 100000; top: 36px; left: 50%; transform: translateX(-50%); padding: 3px 12px; border-radius: 4px; background: #2e2c44; color: #ffe066; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
+  #panel { width: 300px; flex: none; background: #1c1a2b; padding: 10px 12px; overflow-y: auto; box-sizing: border-box; }
+  h1 { font-size: 14px; margin: 0 0 6px; color: #ffe066; }
+  h2 { font-size: 12px; margin: 12px 0 4px; color: #9a98b0; font-weight: 600; }
+  #status { color: #9a98b0; }
+  #status.dirty { color: #ff9a6a; }
+  #tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 4px; width: 100%; padding: 4px; box-sizing: border-box; align-self: flex-start; }   /* 窓の幅に合わせて並び直す */
+  .box.scroll { overflow-y: auto; align-items: flex-start; }
+  #tools button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; background: #2e2c44; border: 2px solid transparent; color: #c8c6d6; border-radius: 4px; cursor: pointer; font-size: 11px; }
+  #tools button.on { border-color: #ffe066; }
+  #tools canvas { width: 32px; height: 32px; image-rendering: pixelated; }
+  #tools kbd { color: #6a6880; font-size: 10px; }
+  button.act { background: #2e2c44; color: #dcdae6; border: 1px solid #46445f; border-radius: 4px; padding: 3px 8px; cursor: pointer; font-size: 12px; }
+  button.act:hover { background: #46445f; }
+  button.act:disabled { opacity: 0.4; cursor: default; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  input[type=text], textarea, select, input[type=number] { background: #0d0b14; color: #dcdae6; border: 1px solid #46445f; border-radius: 3px; padding: 2px 4px; font: inherit; }
+  input[type=text] { width: 100%; box-sizing: border-box; }
+  input[type=number] { width: 44px; }
+  textarea { width: 100%; box-sizing: border-box; height: 52px; resize: vertical; }
+  /* 画面と地図全体は浮かぶ窓（題の帯をつかんで動かし、右下の角で大きさを変える。位置と大きさは覚える。editor.js の floatWin） */
+  .win { position: fixed; z-index: 5; box-sizing: border-box; background: #1c1a2b; border: 1px solid #46445f; border-radius: 4px; resize: both; overflow: hidden; display: flex; flex-direction: column; min-width: 160px; min-height: 80px; box-shadow: 0 4px 16px #0008; }
+  #viewWin { z-index: 4; }
+  .bar { flex: none; padding: 1px 8px; background: #2e2c44; color: #9a98b0; font-size: 11px; cursor: move; user-select: none; }
+  .box { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  #mini { image-rendering: pixelated; cursor: pointer; display: block; }
+  #problems { color: #ff9a6a; margin: 0; padding-left: 16px; }
+  #problems li.info { color: #8b89a3; }
+  #roomSigns .row select, #roomDonors .row select { flex: 1; min-width: 0; }
+  #signPane { width: 100%; padding: 6px 8px; box-sizing: border-box; }
+  #signPane select { flex: 1; min-width: 0; }
+  #signPane textarea { height: auto; font-size: 12px; }
+  #signLink { color: #6cb0f0; font-size: 11px; word-break: break-all; }
+  #signState.dirty { color: #ff9a6a; }
+  .help { color: #8b89a3; font-size: 12px; }
+  .help b { color: #dcdae6; font-weight: 600; }
+  .muted { color: #6a6880; }
+</style>
+</head>
+<body>
+<div id="view">
+  <div id="viewWin" class="win"><div id="viewBar" class="bar">画面</div><div id="viewBox" class="box">
+    <div id="stack">
+      <canvas id="edge"></canvas>
+      <canvas id="c" width="320" height="240"></canvas>
+      <canvas id="o"></canvas>
+    </div>
+  </div></div>
+  <div id="mode"></div>
+  <div id="toast"></div>
+</div>
+<div id="signWin" class="win" style="display:none"><div id="signBar" class="bar">看板</div><div class="box scroll"><div id="signPane">
+  <div class="row"><span id="signWhere"></span></div>
+  <div class="row"><select id="signId"></select><button class="act" id="signNew">新しい文</button></div>
+  <div id="signBody">
+    <div class="row"><input type="text" id="signNote" placeholder="メモ（経典の場所など。ゲームには出ない）"></div>
+    <div class="row">原典のページ <input type="text" id="signPage" placeholder="mn130/#22" style="flex:1"></div>
+    <div class="row"><a id="signLink" target="_blank" rel="noopener"></a></div>
+    <h2>日本語</h2>
+    <textarea id="signJa" rows="7" placeholder="窓に出す行（一行 30 字くらいまで）"></textarea>
+    <div class="row"><input type="text" id="signJaSrc" placeholder="出典（中部 130『天使経』22）"></div>
+    <h2>English</h2>
+    <textarea id="signEn" rows="7" placeholder="lines (up to ~48 letters)"></textarea>
+    <div class="row"><input type="text" id="signEnSrc" placeholder="source (MN 130 Messengers of the Gods, 22)"></div>
+    <div class="row" id="signWarn" style="color:#ff9a6a"></div>
+  </div>
+  <div class="row"><button class="act" id="signSave">看板の文を保存</button><button class="act" id="signRevert">捨てる</button><button class="act" id="signClose">閉じる</button><span id="signState"></span></div>
+</div></div></div>
+<div id="toolsWin" class="win"><div id="toolsBar" class="bar">タイル</div><div class="box scroll"><div id="tools"></div></div></div>
+<div id="miniWin" class="win"><div id="miniBar" class="bar">地図全体</div><div id="miniBox" class="box"><canvas id="mini"></canvas></div></div>
+<div id="panel">
+  <h1>ステージエディタ <select id="mapSel" title="道を替える（保存していない編集があれば確かめる）"></select></h1>
+  <div class="row"><span id="status"></span></div>
+  <div class="row">
+    <button class="act" id="play">▶ 遊ぶ（Enter）</button>
+    <button class="act" id="save">保存（Ctrl+S）</button>
+    <button class="act" id="undo">undo</button>
+    <button class="act" id="redo">redo</button>
+    <button class="act" id="discard">破棄</button>
+  </div>
+
+
+  <h2>部屋 <span id="roomPos" class="muted"></span> <button class="act" id="copy" title="「部屋 12「名前」」を写す">番号を写す</button></h2>
+  <div id="roomNone" class="muted">この画面には部屋がありません。タイルを置くと、一画面の部屋ができます。</div>
+  <div id="roomEdit">
+    <div class="row"><input type="text" id="roomName" placeholder="部屋の名前（空なら、ゲームの右上に出さない）"></div>
+    <div class="row"><input type="text" id="roomPlace" placeholder="経典の場所（初めて入ったときに出す。空なら出さない）"></div>
+    <div id="roomSigns"></div>
+    <div id="roomDonors"></div>
+    <div class="row">
+      <label><input type="checkbox" id="roomLight"> 光の部屋</label>
+      <label id="roomNoBox">番号 <span id="roomNoRealm"></span>-<input type="number" id="roomNo" min="1" max="99" style="width:4em"></label>
+    </div>
+    <div class="row"><textarea id="roomNote" placeholder="メモ（ねらい・仕掛け）"></textarea></div>
+    <div class="row">大きさ（画面） 横 <input type="number" id="roomW" min="1" max="8"> 縦 <input type="number" id="roomH" min="1" max="8"> <button class="act" id="roomSize">変える</button></div>
+    <div class="row" id="roomJoin"></div>
+    <div class="row"><button class="act" id="roomDel">部屋を消す</button></div>
+  </div>
+
+  <h2>地図の確かめ</h2>
+  <ul id="problems"></ul>
+
+  <h2>使い方</h2>
+  <div class="help">
+    <b>選ぶ</b> 押す・なぞると場所を写す。選んだ所を引きずると動かす<br>
+    <b>左</b> 置く　<b>右</b> 消す　<b>中</b> 拾う<br>
+    <b>矢印・WASD</b> 画面を移る　<b>G</b> 升目<br>
+    <b>Enter</b> 遊ぶ　<b>Esc</b> 戻る　<b>Ctrl+S</b> 保存　<b>Ctrl+Z / Y</b> undo / redo
+  </div>
+</div>
+<script type="module" src="/src/editor.js"></script>
+</body>
+</html>

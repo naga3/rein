@@ -1,0 +1,122 @@
+# RE: in CARNATION 人。ト長調、テンポ 140（小走り）
+# I 裏拍の刻みと、8 分で歩くベース → A 素朴なメロディ、ドラムは駆ける刻み → B 一段ずつ上がって倚音で泣く（2 本目がデチューン、
+# ベースはオクターブで押し、ハイハットは 16 分に）→ D から頭へ
+title HUMAN
+tempo 140
+mode famicom
+instrument 0 lead @1 @v0 q7 ~10,8,20
+instrument 1 strum @2 @v7 q8
+part 0 @i0 v11
+part 1 @i1 v6
+part 2 q6
+part 3
+part 4
+
+bar 1 I
+  0: r1
+  1: @i1 V15 v6 r8 o4 b8 r8 >d8 r8 <b8 r8 >d8
+  2: o2 g8 g8 b8 b8 >d8 d8 <b8 b8
+  3: l16 @v2 o5 v4 f v2 f v3 f v2 f v4 f v2 f v3 f v2 f v4 f v2 f v3 f v2 f v4 f v2 f v3 f v2 f
+  4: c4 r8 c8 c4 r8 c8
+bar 2
+  0: r1
+  1: r8 o4 f+8 r8 a8 r8 f+8 r8 a8
+  2: o2 f+8 f+8 a8 a8 >d8 d8 <a8 a8
+  3: l16 @v2 o5 v4 f v2 f v3 f v2 f v4 f v2 f v3 f v2 f @v3 v4 c+ c+ v5 c+ c+ v6 c+ c+ v7 c+ c+
+  4: c8 r8 c8 c8 d16 d16 d16 d16 d8 d8
+bar 3 A
+  0: @i0 v11 o4 d4 g4. a8 b4
+  1: r8 o4 b8 r8 >d8 r8 <b8 r8 >d8
+  2: o2 g8 g8 b8 b8 >d8 d8 <b8 b8
+  3: l16 @v21 o5 v7 c4 @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 4
+  0: o4 a4. f+8 d2
+  1: r8 o4 f+8 r8 a8 r8 f+8 r8 a8
+  2: o2 f+8 f+8 a8 a8 >d8 d8 <a8 a8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 5
+  0: o4 e4 g4 b4. a8
+  1: r8 o4 g8 r8 b8 r8 g8 r8 b8
+  2: o2 e8 e8 g8 g8 b8 b8 g8 g8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 6
+  0: o4 @p8 g2. @p r8 d8
+  1: r8 o4 e8 r8 g8 r8 e8 r8 g8
+  2: o2 c8 c8 e8 e8 g8 g8 e8 e8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v3 v3 c+ v4 c+
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 7
+  0: o4 b4. >c8 d4 <b4
+  1: r8 o4 b8 r8 >d8 r8 <b8 r8 >d8
+  2: o2 g8 g8 b8 b8 >d8 d8 <b8 b8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 8
+  0: o5 e4 <b4 >d4. <b8
+  1: r8 o4 g8 r8 b8 r8 g8 r8 b8
+  2: o2 e8 e8 g8 g8 b8 b8 g8 g8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 9
+  0: o4 a4 >e4 c4 <a4
+  1: r8 o4 e8 r8 a8 r8 e8 r8 a8
+  2: o2 a8 a8 >c8 c8 e8 e8 c8 c8
+  3: l16 @v2 o5 v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f v4 f8 v2 f v3 f @v3 v6 c+8 @v2 v2 f v3 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 10
+  0: o4 @p8 a2. @p r4
+  1: r8 o4 f+8 r8 a8 r8 f+8 r8 a8
+  2: o2 d8 d8 f+8 f+8 a8 a8 f+8 f+8
+  3: l16 @v2 o5 v4 f8 v2 f8 @v3 v6 c+8 @v2 v2 f8 @v3 v4 c+ c+ v5 c+ c+ v6 c+ c+ v7 c+ c+
+  4: c8 r8 d8 c8 d16 d16 d16 d16 d8 d8
+bar 11 B
+  0: o5 d4. c8 <g2
+  1: @i0 V11 v11 @p23 o5 d4. c8 <g2
+  2: o2 c8. c16 >c8 <c8 g8 c8 >c8 <g8
+  3: l16 @v21 o5 v8 c4 @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 r8 d8 c8 r8 c8 d8 c8
+bar 12
+  0: o5 e4. d8 <a2
+  1: o5 e4. d8 <a2
+  2: o2 d8. d16 >d8 <d8 a8 d8 >d8 <a8
+  3: l16 @v2 o5 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 c8 d8 c8 r8 c8 d8 r8
+bar 13
+  0: o5 g4. f+8 d2
+  1: o5 g4. f+8 d2
+  2: o2 b8. b16 >b8 <b8 >f+8 <b8 >b8 f+8
+  3: l16 @v2 o5 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 r8 d8 c8 r8 c8 d8 c8
+bar 14
+  0: o5 e2 d4 <b4
+  1: o5 e2 d4 <b4
+  2: o2 e8. e16 >e8 <e8 b8 e8 >e8 <b8
+  3: l16 @v2 o5 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 c8 d8 c8 r8 c8 d8 r8
+bar 15
+  0: o5 e4. d8 c4 <a4
+  1: o5 e4. d8 c4 <a4
+  2: o2 c8. c16 >c8 <c8 g8 c8 >c8 <g8
+  3: l16 @v2 o5 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 r8 d8 c8 r8 c8 d8 c8
+bar 16
+  0: o5 d4. a8 f+4 a4
+  1: o5 d4. a8 f+4 a4
+  2: o2 d8. d16 >d8 <d8 a8 d8 >d8 <a8
+  3: l16 @v2 o5 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f @v3 v5 c+ c+ v6 c+ c+ v8 c+ c+
+  4: c8 r8 d8 c8 d16 d16 d16 d16 d8 d8
+bar 17
+  0: o5 @p8 b2. @p a8 g8
+  1: o5 @p24 b2. @p23 a8 g8
+  2: o2 g8. g16 >g8 <g8 >d8 <g8 >g8 d8
+  3: l16 @v21 o5 v8 c4 @v3 v8 c+ @v2 v2 f v3 f @v3 v3 c+ @v2 v5 f v2 f v3 f v2 f @v3 v8 c+ @v2 v2 f v3 f v2 f
+  4: c8 r8 d8 c8 r8 c8 d8 c8
+bar 18
+  0: o5 a2 r2
+  1: o5 a2 r2
+  2: o2 d8 d8 f+8 f+8 a8 a8 f+8 f+8
+  3: l16 @v2 o5 v4 f8 v2 f8 @v3 v6 c+8 @v2 v2 f8 @v3 v4 c+ c+ v5 c+ c+ v6 c+ c+ v7 c+ c+
+  4: c8 r8 d8 c8 d16 d16 d16 d16 d8 d8

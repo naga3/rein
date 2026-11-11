@@ -1,0 +1,55 @@
+# RE: in CARNATION 光の部屋の別案「古い祈りの歌」（light.song の方向 B から分けた。2026-11-06。今はゲームで使っていない）
+# ニ長調の五音（D E G A B）、テンポ 66、ドラム無し。8 小節で 1 周
+# 笛が独りで歌い、句の間に間。2 本目は 8 分遅れのエコー（V5）、三角波は空虚 5 度（D と A）
+# メロディは分けるときに書き直した（見本のままだと、五音で順に動く形がお手本の曲と似すぎていた）
+title LIGHT PRAYER
+tempo 66
+mode famicom
+instrument 2 fue @1 q8 ~10,12,30
+  v: 4 8 11 13 | 13 / 9 5 2 0
+part 0 @i2 v10
+part 1 @i2 V5 v9
+part 2 q7
+part 3
+part 4
+
+bar 1 A
+  0: @i2 v10 o5 a4 >d4 <b2
+  1: @i2 V5 v9 r8 o5 a4 >d4 <b4.
+  2: q7 o2 d2 a2
+  3: r1
+bar 2
+  0: o5 @p8 a2. @p r4
+  1: o5 b8 a2. r8
+  2: o2 d2 a2
+  3: r1
+bar 3
+  0: o5 g4. g8 e4 a4
+  1: r8 o5 g4. g8 e4 a8
+  2: o2 d2 a2
+  3: r1
+bar 4
+  0: o5 @p8 b2. @p r4
+  1: o5 a8 b2. r8
+  2: o2 d2 a2
+  3: r1
+bar 5
+  0: o5 e4. g8 a4 >d4
+  1: r8 o5 e4. g8 a4 >d8
+  2: o2 g2 >d2
+  3: r1
+bar 6
+  0: o6 @p8 e2. @p r4
+  1: o6 d8 e2. r8
+  2: o2 g2 >d2
+  3: r1
+bar 7
+  0: o6 d4. <b8 a4 g4
+  1: r8 o6 d4. <b8 a4 g8
+  2: o2 a2 >e2
+  3: r1
+bar 8
+  0: o5 @p8 e2. @p r4
+  1: o5 g8 e2. r8
+  2: o2 d2 a2
+  3: r1

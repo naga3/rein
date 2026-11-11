@@ -1,0 +1,24 @@
+# RE: in CARNATION 効果音: メニュー（タイトル・看板の一覧など）でカーソルが動いたとき（2026-11-07）
+# とても短く軽い「ピッ」。何度も続けて鳴るので、小さく、くせのない音。静かで少し切ない雰囲気に
+# テンポ 225 で 64 分音符 = 1/60 秒（1 コマ）。1 小節は 8 分音符 1 つ（8 コマ ≒ 0.13 秒）。繰り返さない
+title SFX CURSOR
+tempo 225
+mode famicom
+instrument 0 pi @2 q8
+  v: 9 7 4 2 1 | 0
+instrument 1 pi-hi @1 q8
+  v: 8 5 2 1 | 0
+instrument 2 pi-tri q8
+instrument 3 piko @2 q8
+  v: 8 6 3 1 | 0
+instrument 4 piu @2 q8
+  v: 9 7 5 3 2 1 | 0
+  p: 0 -4 -8 | -8
+part 0 @i0 v10
+part 1
+part 2
+
+bar 1
+  0: @i0 v10 o5 a16 r16
+  1: r8
+  2: r8

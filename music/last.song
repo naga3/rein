@@ -1,0 +1,161 @@
+# RE: in CARNATION 最後の道。ニ音を中心に、テンポ 126
+# 矩形波 2 が 3 つの音のめぐり（8 分で回るので 4 拍とずれ、3 小節でひと回り）を最後まで続ける。6 小節ごとに 1 音かベースだけが変わる
+#   1-6 D A E（ベース D、色が無い）→ 7-12 E が F に（Dm、メロディが入る）→ 13-18 戻って、ベースが B♭ → 19-24 D が C に、ベース A → 頭の D へ
+# メロディは「長く伸ばす → 下りる → 伸ばす → 休む」を、ブロックごとに高さを変えて繰り返す
+# ベースは 8 分で淡々と刻み続ける。ドラムもブロックごとに 1 つずつ変わる: 16 分のハイハットとキック → スネアが入る → ハーフタイム → いちばん詰まった刻み
+# 24 小節目のベースが C・C# と上がって、頭の D へ戻る
+title LAST
+tempo 126
+mode famicom
+instrument 0 grey @2 @v0 q7 ~6,12,30
+instrument 1 wheel @1 @v5 q8
+part 0 @i0 v9
+part 1 @i1 v6
+part 2 q6
+part 3
+part 4
+
+bar 1 I
+  0: r1
+  1: @i1 V15 v6 o4 d8 a8 >e8 <d8 a8 >e8 <d8 a8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: c4 r4 c4 r4
+bar 2
+  0: r1
+  1: o5 e8 <d8 a8 >e8 <d8 a8 >e8 <d8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: c4 r4 c4 r4
+bar 3
+  0: r1
+  1: o4 a8 >e8 <d8 a8 >e8 <d8 a8 >e8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: c4 r4 c4 r8 c8
+bar 4
+  0: r1
+  1: o4 d8 a8 >e8 <d8 a8 >e8 <d8 a8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: c4 r4 c4 r4
+bar 5
+  0: r1
+  1: o5 e8 <d8 a8 >e8 <d8 a8 >e8 <d8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: c4 r4 c4 r4
+bar 6
+  0: r1
+  1: o4 a8 >e8 <d8 a8 >e8 <d8 a8 >e8
+  2: o2 d8 d8 d8 d8 d8 d8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v3 c+ c+ v4 c+ c+ v5 c+ c+ v6 c+ c+
+  4: c4 r4 c4 c8 c8
+bar 7 A
+  0: @i0 v9 o4 @p8 a2. @p g4
+  1: o4 d8 a8 >f8 <d8 a8 >f8 <d8 a8
+  2: o2 d8 d8 >d8 <d8 d8 d8 >d8 <d8
+  3: l16 @v21 o5 v6 c4 @v3 v6 c+ @v2 v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 8
+  0: o4 f2 d2
+  1: o5 f8 <d8 a8 >f8 <d8 a8 >f8 <d8
+  2: o2 d8 d8 >d8 <d8 d8 d8 >d8 <d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 9
+  0: o4 @p8 d1 @p
+  1: o4 a8 >f8 <d8 a8 >f8 <d8 a8 >f8
+  2: o2 d8 d8 >d8 <d8 d8 d8 >d8 <d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 10
+  0: r1
+  1: o4 d8 a8 >f8 <d8 a8 >f8 <d8 a8
+  2: o2 d8 d8 >d8 <d8 d8 d8 >d8 <d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 11
+  0: o4 @p8 a2. @p >c4
+  1: o5 f8 <d8 a8 >f8 <d8 a8 >f8 <d8
+  2: o2 d8 d8 >d8 <d8 d8 d8 >d8 <d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 12
+  0: o4 a1
+  1: o4 a8 >f8 <d8 a8 >f8 <d8 a8 >f8
+  2: o2 d8 d8 >d8 <d8 c8 c8 <b-8 b-8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v6 c+ @v2 v1 f v2 f v1 f @v3 v3 c+ c+ v4 c+ c+ v5 c+ c+ v6 c+ c+
+  4: c8 r8 d8 r8 c8 c8 d16 d16 d16 d16
+bar 13 B
+  0: o5 @p8 d2. @p c4
+  1: o4 d8 a8 >e8 <d8 a8 >e8 <d8 a8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v21 o5 v6 c4 @v2 v3 f v1 f v2 f v1 f @v3 v7 c+ @v2 v1 f v2 f v1 f v3 f v1 f @v3 v3 c+ @v2 v1 f
+  4: c8 r8 r8 c8 d4 r8 c8
+bar 14
+  0: o4 a2 f2
+  1: o5 e8 <d8 a8 >e8 <d8 a8 >e8 <d8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v7 c+ @v2 v1 f v2 f v1 f v3 f v1 f @v3 v3 c+ @v2 v1 f
+  4: c8 r8 r8 c8 d4 r8 c8
+bar 15
+  0: o4 @p8 g1 @p
+  1: o4 a8 >e8 <d8 a8 >e8 <d8 a8 >e8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v7 c+ @v2 v1 f v2 f v1 f v3 f v1 f @v3 v3 c+ @v2 v1 f
+  4: c8 r8 r8 c8 d4 r8 c8
+bar 16
+  0: r1
+  1: o4 d8 a8 >e8 <d8 a8 >e8 <d8 a8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v7 c+ @v2 v1 f v2 f v1 f v3 f v1 f @v3 v3 c+ @v2 v1 f
+  4: c8 r8 r8 c8 d4 r8 c8
+bar 17
+  0: o5 @p8 d2. @p e4
+  1: o5 e8 <d8 a8 >e8 <d8 a8 >e8 <d8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v7 c+ @v2 v1 f v2 f v1 f v3 f v1 f @v3 v3 c+ @v2 v1 f
+  4: c8 r8 r8 c8 d4 r8 c8
+bar 18
+  0: o5 d2 r2
+  1: o4 a8 >e8 <d8 a8 >e8 <d8 a8 >e8
+  2: o1 b-8 b-8 >b-8 <b-8 b-8 b-8 >b-8 <b-8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f @v3 v4 c+ c+ v5 c+ c+ v6 c+ c+ v7 c+ c+
+  4: c8 r8 r8 c8 d8 d16 d16 d8 d8
+bar 19 C
+  0: o4 @p8 e2. @p g4
+  1: o4 c8 a8 >e8 <c8 a8 >e8 <c8 a8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >a8 <a8
+  3: l16 @v21 o5 v7 c4 @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 20
+  0: o4 a2 g2
+  1: o5 e8 <c8 a8 >e8 <c8 a8 >e8 <c8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >a8 <a8
+  3: l16 @v2 o5 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 21
+  0: o4 @p8 e1 @p
+  1: o4 a8 >e8 <c8 a8 >e8 <c8 a8 >e8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >a8 <a8
+  3: l16 @v2 o5 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 22
+  0: r1
+  1: o4 c8 a8 >e8 <c8 a8 >e8 <c8 a8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >a8 <a8
+  3: l16 @v2 o5 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 23
+  0: o4 @p8 a2. @p r4
+  1: o5 e8 <c8 a8 >e8 <c8 a8 >e8 <c8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >a8 <a8
+  3: l16 @v2 o5 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8
+bar 24
+  0: r1
+  1: o4 a8 >e8 <c8 a8 >e8 <c8 a8 >e8
+  2: o1 a8 a8 >a8 <a8 a8 a8 >c8 c+8
+  3: l16 @v2 o5 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f @v3 v3 c+ @v2 v4 f v1 f v3 f v1 f @v3 v7 c+ @v2 v1 f v3 f v1 f
+  4: c8 r8 d8 c8 r8 c8 d8 r8

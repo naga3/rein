@@ -1,0 +1,148 @@
+# RE: in CARNATION 餓鬼。ハ長調、テンポ 144
+# 矩形波 2 が遠くの祭りの笛（五音音階、細く小さく）、矩形波 1 は誰にも気づかれない者の、間の多いメロディ
+# ベースは 8 分で弾み、ドラムは 16 分のハイハットで駆ける。8 小節目と最後だけ、ベースとドラムが欠ける
+# I 祭り太鼓（タム）だけ → A → B（F が Fm に陰り、遠い祭りはもっと小さく）→ Fm から C の頭へ
+# 音色（2026-11-07 に tone-1-5 の C「遠い鈴」を選んだ）: メロディは 25% のまま、ため息のように弱まり遅れて揺れる（tameiki2）。笛は 50% のすぐ消える鈴（suzu）
+title PETA
+tempo 144
+mode famicom
+instrument 0 ghost @1 @v0 q7 ~8,10,24
+instrument 1 fue @0 @v1 q6
+instrument 2 kusumi @2 q7 ~10,16,30
+  v: 3 5 7 9 11 12 13 14 | 14 / 10 7 4 2 0
+instrument 3 tsubu @1 q8
+  v: 15 12 10 8 7 6 5 4 3 | 3 / 2 1 0
+instrument 4 tameiki @0 q7 ~8,12,20
+  v: 6 10 13 15 15 14 14 13 13 12 12 11 11 10 10 10 9 9 9 9 8 8 8 8 | 8 / 6 4 2 1 0
+instrument 5 nagori @0 q8
+  v: 15 13 11 10 9 8 7 6 6 5 5 4 4 3 3 2 2 1 1 | 0
+instrument 6 tameiki2 @1 q7 ~10,14,36
+  v: 6 10 13 15 15 14 14 13 13 12 12 11 11 10 10 10 9 9 9 9 8 8 8 8 | 8 / 6 4 2 1 0
+instrument 7 suzu @2 q8
+  v: 12 9 7 5 4 3 3 2 2 2 | 1 / 1 0
+part 0 @i0 v9
+part 1 @i1 v5
+part 2 q5
+part 3
+part 4
+
+bar 1 I
+  0: r1
+  1: @i7 v5 o5 e8 g8 a8 g8 e8 d8 c8 d8
+  2: o2 c8 c8 g8 g8 >c8 c8 <g8 g8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: e8 r8 e8 e8 r8 e8 f8 r8
+bar 2
+  0: r1
+  1: o5 e8 r8 e8 d8 c8 <a8 >c8 r8
+  2: o2 a8 a8 >e8 e8 a8 a8 e8 e8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f v3 f v1 f v2 f v1 f
+  4: e8 r8 e8 e8 r8 e8 f8 r8
+bar 3
+  0: r1
+  1: o5 c8 d8 c8 <a8 g8 a8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 c8 c8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 4
+  0: r1
+  1: o5 d8 r8 d8 e8 g8 r8 e8 d8
+  2: o2 g8 g8 >d8 d8 g8 g8 d8 d8
+  3: l16 @v2 o5 v4 f8 v1 f8 v3 f8 v1 f8 @v3 v3 c+ c+ v4 c+ c+ v5 c+ c+ v6 c+ c+
+  4: c8 r8 d8 r8 g16 g16 f16 f16 e16 e16 e16 e16
+bar 5 A
+  0: @i6 v9 o4 r4 g4 @p8 >c2 @p
+  1: o5 e8 g8 a8 g8 e8 d8 c8 d8
+  2: o2 c8 c8 g8 g8 >c8 c8 <g8 g8
+  3: l16 @v21 o5 v6 c4 @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 6
+  0: o5 c4. <b8 a2
+  1: o5 e8 r8 e8 d8 c8 <a8 >c8 r8
+  2: o2 a8 a8 >e8 e8 a8 a8 e8 e8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 e8 d8 e8
+bar 7
+  0: o4 r4 a4 >c4. d8
+  1: o5 c8 d8 c8 <a8 g8 a8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 c8 c8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 8
+  0: o5 d2. r4
+  1: o5 d8 r8 d8 e8 g8 r8 e8 d8
+  2: o2 g8 g8 >d8 d8 r2
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 r2
+bar 9
+  0: o5 e4. d8 c4 <g4
+  1: o5 e8 g8 a8 g8 e8 d8 c8 d8
+  2: o2 c8 c8 g8 g8 >c8 c8 <g8 g8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 10
+  0: o4 @p8 a2 @p r4 a8 >c8
+  1: o5 e8 r8 e8 d8 c8 <a8 >c8 r8
+  2: o2 a8 a8 >e8 e8 a8 a8 e8 e8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 e8 d8 e8
+bar 11
+  0: o5 d4. c8 <a4 f4
+  1: o5 d8 r8 d8 c8 <a8 r8 >d8 r8
+  2: o2 d8 d8 a8 a8 >d8 d8 <a8 a8
+  3: l16 @v2 o5 v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 12
+  0: o4 g2. r4
+  1: o5 d8 r8 d8 e8 g8 r8 e8 d8
+  2: o2 g8 g8 >d8 d8 g8 g8 d8 d8
+  3: l16 @v2 o5 v4 f8 v1 f8 v3 f8 v1 f8 @v3 v3 c+ c+ v4 c+ c+ v5 c+ c+ v6 c+ c+
+  4: c8 r8 d8 r8 g16 g16 f16 f16 e16 e16 e16 e16
+bar 13 B
+  0: o5 c4. <a8 >c4 f4
+  1: v4 o5 c8 d8 c8 <a8 g8 a8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 c8 c8
+  3: l16 @v21 o5 v6 c4 @v3 v5 c+ @v2 v1 f v2 f v1 f v4 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 14
+  0: o5 @p8 a-2 @p g4 f4
+  1: o5 c8 r8 c8 <a-8 g8 a-8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 c8 c8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 e8 d8 e8
+bar 15
+  0: o5 @p8 e2. @p r4
+  1: o5 e8 g8 a8 g8 e8 d8 c8 d8
+  2: o2 c8 c8 g8 g8 >c8 c8 <g8 g8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 16
+  0: o5 c4. <b8 a4 e4
+  1: o5 e8 r8 e8 d8 c8 <a8 >c8 r8
+  2: o2 a8 a8 >e8 e8 a8 a8 e8 e8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 e8 d8 e8
+bar 17
+  0: o4 f4. a8 >d4 f4
+  1: o5 d8 r8 d8 c8 <a8 r8 >d8 r8
+  2: o2 d8 d8 a8 a8 >d8 d8 <a8 a8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 18
+  0: o5 e4 d4 <b4 g4
+  1: o5 d8 r8 d8 e8 g8 r8 e8 d8
+  2: o2 g8 g8 >d8 d8 g8 g8 d8 d8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 e8 d8 e8
+bar 19
+  0: o5 c2. <a4
+  1: o5 c8 d8 c8 <a8 g8 a8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 c8 c8
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 c8 d8 r8
+bar 20
+  0: o4 @p8 a-2. @p r4
+  1: o5 c8 r8 c8 <a-8 g8 a-8 >c8 r8
+  2: o2 f8 f8 >c8 c8 f8 f8 r4
+  3: l16 @v2 o5 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f @v3 v2 c+ @v2 v3 f v1 f v2 f v1 f @v3 v5 c+ @v2 v1 f v2 f v1 f
+  4: c8 r8 d8 r8 c8 r8 r4

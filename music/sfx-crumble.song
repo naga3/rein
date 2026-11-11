@@ -1,0 +1,28 @@
+# RE: in CARNATION 効果音: すり抜けの岩（隠された通路）や扉が崩れて開いた瞬間（2026-11-07）
+# 岩がガラガラと崩れ落ちる音（ノイズ）に、見つけた小さな喜び（キラッ）を少し。画面は白っぽく光り、かけらが跳ねて土ぼこり
+# テンポ 225 で 64 分音符 = 1/60 秒（1 コマ）。1 小節は付点 2 分音符 1 つ（48 コマ ≒ 0.8 秒）。繰り返さない
+title SFX CRUMBLE
+tempo 225
+mode famicom
+instrument 0 kira @2 q8
+  v: 10 8 6 4 3 2 1 | 0
+instrument 1 tri-drop q8
+  p: 0 -6 -12 -18 -24 -30 -36 -42 | -42
+instrument 2 kira-glide @2 q8
+  v: 1 2 4 6 7 6 5 4 3 2 1 | 0
+  p: 0 2 4 6 8 10 12 14 16 | 16
+instrument 3 kira-d @2 q8
+  v: 10 8 6 4 3 2 1 | 0
+  p: 1 | 1
+part 0
+part 1
+part 2
+part 3 @0
+part 4
+
+bar 1
+  0: r16. @i0 v6 o5 a32. >c+32. e32. a16 r4 r8 r16 r64
+  1: r2.
+  2: r2.
+  3: @0 v11 o4 d32. r64 v8 a32 v6 f32 r64 v7 b32 v5 e32 r32 v6 g+32 v4 d32 r64 v5 a+32 v3 f32 r32 v4 g32 v3 c+32 r32 v3 a32 v2 e32 r32. v2 g32 v1 d32 r16 r64
+  4: r2.

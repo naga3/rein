@@ -1,0 +1,63 @@
+# RE: in CARNATION 光の部屋（見つけた瞬間から流れる。静かで荘厳、温かく気高い。どの道でも同じ曲。繰り返す）
+# 「聖歌のような和音」（2026-11-06 に方向 C を採用）。ニ長調、テンポ 76、ドラム無し。8 小節で 1 周
+# ふくらむ「声」の音色 2 本と三角波で 3 声、2 分音符で進み sus4 が解ける。ノイズが 2 小節ごとに遠くかすかな風
+# 方向 A（澄んだ光）は light-clear.song、B（古い祈りの歌）は light-prayer.song に分けた
+title LIGHT
+tempo 76
+mode famicom
+instrument 0 hikari @2 q8 ~6,14,40
+  v: 5 8 11 13 14 15 | 14 / 11 8 5 3 1 0
+instrument 1 yuragi @2 q8
+  v: 15 13 12 11 10 9 9 8 8 7 7 6 6 5 | 5 / 3 2 1 0
+instrument 2 fue @1 q8 ~10,12,30
+  v: 4 8 11 13 | 13 / 9 5 2 0
+instrument 3 koe @2 q8 ~4,16,48
+  v: 3 5 7 9 11 12 13 | 13 / 11 9 7 5 3 1 0
+instrument 4 kaze @0 q8
+  v: 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6 7 7 7 8 8 8 | 8 / 7 7 6 6 5 5 4 4 3 3 2 2 1 1 0
+part 0 @i3 v10
+part 1 @i3 v7
+part 2 q8
+part 3
+part 4
+
+bar 1 A
+  0: t76 @i3 v10 o5 f+2 g2
+  1: @i3 V15 v7 o4 d2 d2
+  2: q8 o3 d2 d2
+  3: @i4 v6 o4 c1
+bar 2
+  0: o5 a2 e2
+  1: o4 f+2 c+2
+  2: o3 d2 c+2
+  3: r1
+bar 3
+  0: o5 f+4 a4 g2
+  1: o4 d2 <b2
+  2: o2 b2 g2
+  3: @i4 v6 o4 c1
+bar 4
+  0: o5 @p8 a2 @p g+2
+  1: o4 e2 e2
+  2: o2 e2 e2
+  3: r1
+bar 5
+  0: o5 b2 a4 f+4
+  1: o4 d2 d2
+  2: o2 g2 f+2
+  3: @i4 v6 o4 c1
+bar 6
+  0: o5 g2 e2
+  1: o3 b2 >c+2
+  2: o2 e2 a2
+  3: r1
+bar 7
+  0: o5 f+2 d2
+  1: o4 d2 <b2
+  2: o2 b2 g2
+  3: @i4 v6 o4 c1
+bar 8
+  0: o5 @p8 d2 @p c+2
+  1: o3 a2 a2
+  2: o2 a2 a2
+  3: r1

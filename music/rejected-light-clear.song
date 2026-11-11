@@ -1,0 +1,56 @@
+# RE: in CARNATION 光の部屋の別案「澄んだ光」（light.song の方向 A から分けた。2026-11-06。今はゲームで使っていない）
+# ニ長調、テンポ 72、ドラム無し。8 小節で 1 周。リディアの G#（D の上の E の和音）がほのかに光る
+# 2 本目がゆっくり 8 分の分散和音、三角波は D を伸ばし続け、メロディは丸い音で長く伸ばしてしゃくり上げる
+title LIGHT CLEAR
+tempo 72
+mode famicom
+instrument 0 hikari @2 q8 ~6,14,40
+  v: 5 8 11 13 14 15 | 14 / 11 8 5 3 1 0
+instrument 1 yuragi @2 q8
+  v: 15 13 12 11 10 9 9 8 8 7 7 6 6 5 | 5 / 3 2 1 0
+part 0 @i0 v10
+part 1 @i1 v6
+part 2 q7
+part 3
+part 4
+
+bar 1 A
+  0: @i0 v10 r2 o5 @p8 a2
+  1: @i1 V15 v6 o3 a8 >d8 f+8 a8 >d8 <a8 f+8 d8
+  2: q7 o2 d1
+  3: r1
+bar 2
+  0: o5 @p8 g+2. @p f+8 e8
+  1: o3 b8 >e8 g+8 b8 >e8 <b8 g+8 e8
+  2: o2 d1
+  3: r1
+bar 3
+  0: o5 @p8 f+1
+  1: o3 a8 >d8 f+8 a8 >d8 <a8 f+8 d8
+  2: o2 d1
+  3: r1
+bar 4
+  0: o5 e2 @p8 b2
+  1: o3 b8 >e8 g+8 b8 >e8 <b8 g+8 e8
+  2: o2 d1
+  3: r1
+bar 5
+  0: o5 @p8 a2. @p f+8 d8
+  1: o3 b8 >d8 f+8 b8 >d8 <b8 f+8 d8
+  2: o2 b1
+  3: r1
+bar 6
+  0: o5 @p8 e2. @p c+4
+  1: o3 a8 >c+8 f+8 a8 >c+8 <a8 f+8 c+8
+  2: o2 f+1
+  3: r1
+bar 7
+  0: o5 @p8 b2 @p g+4 e4
+  1: o3 g+8 b8 >e8 g+8 b8 g+8 e8 <b8
+  2: o2 e1
+  3: r1
+bar 8
+  0: o5 @p8 d2 @p c+2
+  1: o3 a8 >d8 e8 a8 e8 c+8 <a8 >c+8
+  2: o2 a1
+  3: r1

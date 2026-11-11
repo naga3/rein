@@ -1,0 +1,10 @@
+node_modules
+dist
+# 開発メモ（公開しない。2026-11-11）
+NOTES.md
+docs/
+art/GROUP.md
+music/GROUP.md
+art/ref/
+zz-*
+**/zz-*
