@@ -65,21 +65,10 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
     for (const ri of d.found) openDoorsOf(world, ri)
     for (const gi of d.revealed) openHidden(world, gi)
     for (const di of d.opened) openDoor(world, di)
-    // 再び人: 道の区切りごとに、その道で死んだ所の花（自分の過去の生）を並べる。一周の状態（触れたか、何周め）
-    S.memories = []; S.loopRun = null
-    const secs = REALMS[r]?.sections
-    if (secs && world.loop) {
-      const secLen = world.loop.len / secs.length
-      secs.forEach((sr, i) => {
-        const rooms = maps[sr] || [], fl = records[sr]?.flowers || []
-        if (!rooms.length || !fl.length) return
-        const minX = Math.min(...rooms.map((q) => q.x)) * TILE, maxX = Math.max(...rooms.map((q) => q.x + q.rows[0].length)) * TILE
-        for (const f of fl) {
-          const x = world.loop.x0 + secLen * i + 24 + ((f.x - minX) / Math.max(1, maxX - minX)) * (secLen - 48)
-          const y = groundBelow(world, x, (world.rooms[world.loop.room].y + 3) * TILE)   // 天井より下から地面を探す
-          S.memories.push({ x, y, life: f.life, t: 9, realm: sr })   // 継ぎ目の両側の写しには、描くときに一周ずらして重ねる
-        }
-      })
+    // 再び人: 一周の状態（触れたか、何周め）
+    //   前は、道の区切りごとに、その道で死んだ所の花（自分の過去の生）を並べていたが、2026-11-11 にやめた（区切りが見えなくなって、何の花か伝わらなかった）
+    S.loopRun = null
+    if (REALMS[r]?.sections && world.loop) {
       // 周の状態（この周で触れたか、触れたもの、何周め、輪が切れたか）は記録に残す（読み直しても、触れた周は触れたまま）
       const lr = d.loopRun || {}
       // 道をめぐる間は、輪をはじめから（記録の輪は切れたままにして、めぐる間の輪は記録に入れない）

@@ -23,19 +23,9 @@ export function makeEffects({ fb, px, blend, addLight, artPic, artBlit, animFram
     artBlit(pic, sx + 5 - (pic.rows[0].length >> 1), sy + 14 - pic.rows.length, false, mand && gold ? MANDARAVA_GOLD : null)
   }
 
-  // 再び人: これまでの道で死んだ所の花（自分の過去の生）
-  //   再び人は、継ぎ目の両側の写しにも、一周ずらして同じように描く（花・誘うもの）
+  // 再び人は、継ぎ目の両側の写しにも、一周ずらして同じように描く（花・誘うもの）
   //   写しは継ぎ目から 1 画面ぶんだけ（道の始まりの 20 列は終わりの先に、終わりの 20 列は始まりの手前に）
   const loopOffsAt = (world, x) => { const lp = world.loop; if (!lp) return [0]; const o = [0]; if (x >= lp.x0 && x < lp.x0 + 20 * TILE) o.push(lp.len); if (x >= lp.x0 + lp.len - 20 * TILE && x < lp.x0 + lp.len) o.push(-lp.len); return o }   // 一周の中のものだけ写す（写しの場所や、継ぎ目より先のものは写さない）
-  const drawMemories = (S, world, camX, camY) => {
-    (S.memories || []).forEach((f, i) => {
-      for (const o of loopOffsAt(world, f.x)) {
-        const sx = Math.round(f.x + o - camX) - 5 + Math.round((hash(i, 13) - 0.5) * 8), sy = Math.round(f.y - camY) - 14
-        if (sx < -14 || sy < -16 || sx > W + 4 || sy > H + 4) continue
-        flowerArt(f, sx, sy, i + 500, S.time)
-      }
-    })
-  }
   // 花（前の生で死んだ所）。同じ所の花は少しずつずらして束にする
   const drawFlowers = (S, world, camX, camY) => {
     S.flowers.forEach((f, i) => {
@@ -452,5 +442,5 @@ export function makeEffects({ fb, px, blend, addLight, artPic, artBlit, animFram
       for (let x = -rr; x <= rr; x += 2) if (Math.abs(Math.abs(x) - rr) < 6) px(cx + Math.round(x), sf, P.white)
     }
   }
-  return { drawJaws, drawBlessing, drawMemories, drawFlowers, drawPetals, drawPuff, drawWisp, drawBloom, drawDiscover, drawCrumble, drawRevealFlash, shakeScreen, drawJet }
+  return { drawJaws, drawBlessing, drawFlowers, drawPetals, drawPuff, drawWisp, drawBloom, drawDiscover, drawCrumble, drawRevealFlash, shakeScreen, drawJet }
 }

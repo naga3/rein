@@ -230,7 +230,6 @@ export function createRenderer(fb) {
           }
         }
       }
-      effects.drawMemories(S, world, camX, camY)
       if (S.loopRun) things.drawTempts(world, S, camX, camY, t)
       effects.drawFlowers(S, world, camX, camY)
       tiles.drawSpikesFront(world, camX, camY, t)
