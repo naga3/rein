@@ -51,7 +51,7 @@ export function buildWorld(rooms, { strict = true, realm = 'hell' } = {}) {
       if (c === 'O') foods.push({ tx: x, ty: y, index: foods.length })
       if (c === 'M') folk.push({ tx: x, ty: y, index: folk.length })
       if (c === 'Y' || c === 'Q') donors.push({ tx: x, ty: y, x: x * TILE + 8, y: (y + 1) * TILE, index: donors.length, sariputta: c === 'Q', link: r.donors?.[`${i},${j}`] || null, home: ri })   // link: 結んだ光の部屋（「道の番号-光の部屋の番号」。部屋の donors: { "x,y": "3-5" }。2026-11-08）   // Q はサーリプッタ（布施人ごとに決める。2026-11-07。前は部屋の sariputta: true で決めていた）
-      if (c === 'W') winds.push({ tx: x, ty: y, x: x * TILE + 8, y: y * TILE + 8, index: winds.length })
+      if (c === 'W') winds.push({ tx: x, ty: y, x: x * TILE + 8, y: y * TILE + 8, index: winds.length, ri })   // ri: 生まれる部屋（その部屋にいるときだけ生まれる）
       if (c === 'T') tempts.push({ tx: x, ty: y, index: tempts.length, x: x * TILE + TILE / 2, y: (y + 1) * TILE, kind: (x * 3 + y) % 5 })
       if (c === 'B' || c === 'b') signs.push({ tx: x, ty: y, x: x * TILE + TILE / 2, y: (y + 1) * TILE, id: r.signs?.[`${x - r.x},${y - r.y}`] || null, realm, index: signs.length, inRock: c === 'b' })   // id が無い看板は、読めない（エディタの見本など）
       if (c === 'G') gifts.push({ tx: x, ty: y, index: gifts.length, x: x * TILE + TILE / 2, y: (y + 1) * TILE, link: r.gifts?.[`${i},${j}`] || null, home: ri })   // link: 結んだ光の部屋（部屋の gifts: { "x,y": "4-1" }。2026-11-08）

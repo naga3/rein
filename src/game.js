@@ -524,13 +524,18 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
       const r = () => (b.seed = (b.seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff   // 乱数（風ごとの種から）
       const ember = (x, y, vx, vy, life, big = false) => b.embers.push({ x, y, vx, vy, t: 0, life, big })
       b.t += dt
-      if (b.st === 'idle') { if (Math.hypot(px - b.w.x, py - b.w.y) < WIND.wake) { b.st = 'gather'; b.t = 0 } }
+      // 画面（部屋）をまたいでいるときは生まれない（2026-11-11。本人の頼み。隣の部屋の入口のそばで、見えない所の風が生まれて、いきなり当たることがあった）。
+      //   生まれるのは、プレイヤーが風と同じ部屋にいるときだけ。集まっている間に部屋を出たら、生まれずに元へ戻る。追っている間に部屋を出たら、ほどけて消える（当たりは無くなる）
+      const here = S.room?.index === b.w.ri
+      if (b.st === 'idle') { if (here && Math.hypot(px - b.w.x, py - b.w.y) < WIND.wake) { b.st = 'gather'; b.t = 0 } }
+      else if (b.st === 'gather' && !here) { b.st = 'idle'; b.t = 0 }
       else if (b.st === 'gather') {
         if (b.t >= WIND.gather) {
           Object.assign(b, { st: 'blow', t: 0, x: b.w.x, y: b.w.y, vx: 0, vy: 0, heat: 1, trail: [] })
           for (let i = 0; i < 10; i++) { const a = r() * Math.PI * 2, v = 40 + r() * 50; ember(b.x, b.y, Math.cos(a) * v, Math.sin(a) * v, 0.4 + r() * 0.4) }   // 放つ: 火の粉がはじける
         }
       } else if (b.st === 'blow' || b.st === 'fade') {
+        if (b.st === 'blow' && !here) { b.st = 'fade'; b.t = 0 }
         const dx = px - b.x, dy = py - b.y, d = Math.hypot(dx, dy) || 1
         // 消える間（fade）も、同じ形で追い続ける（少しずつ遅くなる。止めると跡が縮んで、筋が短い線に分かれて見えた。2026-11-07）。当たりは無い
         const fk = b.st === 'fade' ? Math.min(1, b.t / WIND.fade) : 0, want = WIND.speed * (1 - fk * 0.4)
