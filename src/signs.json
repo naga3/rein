@@ -306,7 +306,7 @@
         "あなたたちが、自ら励まねばならない。",
         "如来たちは、道を説く者にすぎない。",
         "道を歩み、瞑想する者は、",
-        "死の王の縛りから解き放たれる。"
+        "マーラの縛りから解き放たれる。"
       ],
       "source": "法句経 276"
     },
@@ -1162,25 +1162,31 @@
     }
   },
   "dhp186": {
-    "note": "法句経 186（仏の章）。再び人（餓鬼の区切り）。金貨の雨が降っても、欲は満たされない（誘うものにも）",
+    "note": "法句経 186（仏の章）。再び人（餓鬼の区切り）。金貨の雨が降っても、欲は満たされない（誘うものにも）（2026-11-12 に 187 偈まで入れた。二つで一つの文）",
     "page": "dhp/#186",
     "ja": {
       "lines": [
         "金貨の雨が降っても、",
         "欲は満たされない。",
-        "欲は楽しみが少なく、苦しみが多い。",
-        "賢い人は、そう知る。"
+        "欲は楽しみが少なく、苦しみが多いと知って、",
+        "賢い人は、天の楽しみにさえ、",
+        "喜びを見いださない。",
+        "正しく目覚めた人の弟子は、",
+        "渇愛の尽きることを喜ぶ。"
       ],
-      "source": "法句経 186"
+      "source": "法句経 186・187"
     },
     "en": {
       "lines": [
         "Not even with a rain of coins",
         "is there satisfaction in sensual pleasures.",
-        "They give little joy and much suffering:",
-        "so the wise one knows."
+        "Knowing that they give little enjoyment",
+        "and much suffering, the wise one",
+        "finds no delight even in heavenly pleasures.",
+        "The disciple of the fully awakened one",
+        "delights in the ending of craving."
       ],
-      "source": "Dhammapada 186"
+      "source": "Dhammapada 186-187"
     }
   },
   "dhp21": {
