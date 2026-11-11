@@ -102,6 +102,10 @@ const ROOMS_EN = {
   門前: 'Before the Gate', 屋根の上: 'On the Rooftops', 裏路地: 'Back Alley', 墓地: 'Cemetery', サーリプッタの道: "Sariputta's Road", サーリプッタの供養の場: "Sariputta's Offering",
   川辺の村: 'Riverside Village', 渡し瀬: 'The Ford', 段々の田: 'Terraced Paddies', 坂の村: 'Hillside Village', 竹林の崖: 'Bamboo Cliff', 霊鷲山: 'Vulture Peak',
   歓喜園の空: 'Sky over the Garden of Joy', 自分の生の跡: 'Traces of My Lives', 静けさ: 'Stillness',
+  何もない部屋: 'Empty Room', 炎の下: 'Beneath the Flames', 水下: 'Under the Water', 涅槃へ向かう: 'Toward Nibbana', 新しい部屋: 'New Room',
+  賑わう町: 'Bustling Town', 施しの家の前: "Before the Giver's House", 物干しの屋根: 'Rooftops of Drying Cloth', 川への坂: 'Slope to the River', 渡し場: 'Ferry Landing',
+  川沿いの市: 'Riverside Market', 乾いた川床: 'Dry Riverbed', 熱風の辻: 'Crossroads of Hot Wind', 陽炎の通り: 'Street of Heat Haze', 焼けた路地: 'Scorched Alley',
+  戸口の通り: 'Street of Doorways', 四方の辻: 'Four-Way Crossing', 夜の市: 'Night Market', 火葬場: 'Cremation Ground', 墓地の門: 'Cemetery Gate', 夜明けの道: 'Road at Dawn',
 }
 export const roomName = (ja) => (LANG === 'en' ? ROOMS_EN[ja] ?? ja : ja)
 
