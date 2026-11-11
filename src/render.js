@@ -190,7 +190,7 @@ export function createRenderer(fb) {
       if (lightLv >= 4) for (let i = 0; i < 40; i++) { const x = Math.floor(hash(i, 31) * W), y = Math.floor(((hash(i, 32) * H - S.time * (6 + hash(i, 33) * 8)) % H + H) % H); px(x, y, i % 3 ? P.white : P.ye3) }
       effects.drawBlessing(S, world, camX, camY)   // 見つけた光の部屋の、祝福の花びら
       for (const j of world.jets) { const sx = j.x * TILE - camX, sy = j.y * TILE - camY; if (sx > -20 && sx < W + 20) effects.drawJet(j, sx, sy, S.time) }
-      for (const c of world.creatures || []) things.drawCreature(c, camX, camY, S.time)
+      for (const c of world.creatures || []) things.drawCreature(c, camX, camY, S.creatureTime ? S.creatureTime(c) : S.time)
       for (const g of world.signs || []) if (signShown(world, g)) {   // 岩の中の看板は、崩れてから
         // 再び人: 継ぎ目の近くの看板は、継ぎ目の向こうの写しにも描く（花・誘うものと同じ。2026-11-07。一周して戻ったとき、看板が消えてから出て見えた）。写しも読める（src/world.js の signOffsets）
         for (const off of signOffsets(world, g)) things.drawSign(off ? { ...g, x: g.x + off, off } : g, camX, camY, S, t)

@@ -1,5 +1,5 @@
 // ゲームの流れ（描画なし）: 生と死、花、部屋とカメラ、保存
-import { buildWorld, TILE, deadly, spikeAt, roomAt, groundBelow, hiddenTouched, openHidden, openDoorsOf, openDoor, doorTouched, tileAt, isSolidKind, K, offeringAt , signShown, signOffsets, folkAt, WIND, DONOR, CRUMBLE, ROCK } from './world.js'
+import { buildWorld, TILE, deadly, spikeAt, roomAt, groundBelow, hiddenTouched, openHidden, openDoorsOf, openDoor, doorTouched, tileAt, isSolidKind, K, offeringAt , signShown, signOffsets, folkAt, WIND, DONOR, CRUMBLE, ROCK, SNAKE } from './world.js'
 import { tr, roomName } from './i18n.js'
 import { placedSigns } from './signs.js'
 import { moveDonor, donorZone, floorSpanAt } from './donor.js'
@@ -163,12 +163,35 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
   // 布施人を、結ばれた光の部屋の座る所のそばに、ひざまずいた姿で置く（もう満ちた光の部屋。生の始まり・デバッグの「全部」）
   const placeDonorAtLight = (b) => { const seat = world.rooms[b.d.target].seat; Object.assign(b, { st: 'offer', room: b.d.target, x: seat.x - 10, y: seat.y, vx: 0, vy: 0, dir: 1, kneel: -1e9, away: 0 }) }
 
+  // 部屋の時計（2026-11-11。本人の頼み）: 生き物（鳥・魚・蛇）と転がる岩は、いる部屋に入った時から数える時計で動く。
+  //   世界の時計のままだと、部屋に入った瞬間（生き直した瞬間も）に、たまたま入口のそばにいた蛇や岩にいきなり当たって理不尽だった。
+  //   入るたびに同じ始まり方になる: 蛇はプレイヤーから遠い方の端から、岩は予兆の砂ぼこり（ROCK.warn 秒）のあとに初めて出る。
+  //   カメラが移る間（ROOM_PAUSE）は止まったまま。ほかの部屋（移る間に見えている隣の部屋）は世界の時計のまま。噴き出す炎は世界の時計のまま
+  S.roomClock = { ri: -1, t0: 0, off: new Map() }
+  const startRoomClock = (room, delay = 0) => {
+    const C = S.roomClock = { ri: room ? room.index : -1, t0: S.time + delay, off: new Map() }
+    if (!room) return
+    const px = S.player?.x ?? 0
+    for (const c of world.creatures || []) {
+      if (c.ri !== C.ri || c.kind !== 'snake') continue
+      // 蛇: 時計 0 で、プレイヤーから遠い方の端にいるように（creatureAt の d が 0 なら左の端、len なら右の端）
+      const len = Math.max(1, c.x1 - c.x0), want = Math.abs(px - c.x0) > Math.abs(px - c.x1) ? 0 : len
+      C.off.set(c, ((((want - c.phase * len * 2) % (len * 2)) + len * 2) % (len * 2)) / SNAKE.speed)
+    }
+    for (const q of world.rockers || []) if (q.ri === C.ri) S.rockK?.delete(q.index)   // 時計が変わっても、その瞬間に岩を出さない
+    if (S.rocks) S.rocks = S.rocks.filter((r) => r.q.ri !== C.ri)   // 前に入ったときの岩は残さない
+  }
+  const roomLocal = (ri) => (ri === S.roomClock.ri ? Math.max(0, S.time - S.roomClock.t0) : null)
+  S.creatureTime = (c) => { const lt = roomLocal(c.ri); return lt == null ? S.time : lt + (S.roomClock.off.get(c) || 0) }
+  // 岩の時計: 部屋の時計 0 で、次に出るまでちょうど ROCK.warn 秒（予兆の砂ぼこりが始まる所）
+  const rockTime = (q) => { const lt = roomLocal(q.ri); return lt == null ? S.time : lt + ((((1 - ROCK.warn / ROCK.period - q.phase) % 1) + 1) % 1) * ROCK.period }
   // 次の生は、死んだ部屋の入口から（入口: その部屋に入って最初に足をついた所）
   let pendingSpawn = false
   const beginLife = () => {
     S.player = createPlayer(S.spawn.x, S.spawn.y)
     pendingSpawn = false
     S.room = roomAt(world, S.player.x, S.player.y - 8)
+    startRoomClock(S.room)
     S.cam = camTarget(); S.camMin = null
     S.camT = 1
     S.dead = null
@@ -446,14 +469,14 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
   }
   const stepRocks = (p, dt) => {
     for (const q of world.rockers) {
-      const k = Math.floor(S.time / ROCK.period + q.phase)
+      const rt = rockTime(q), k = Math.floor(rt / ROCK.period + q.phase)
       if (S.rockK.has(q.index) && S.rockK.get(q.index) !== k) {
         S.rocks.push({ q, x: q.x, y: q.y, vx: q.dir * ROCK.speed, vy: 0, dir: q.dir, a: 0, onGround: false, st: 'roll', t: 0, fall: 0, seed: k * 31 + q.index })
         rockDustBurst(q.x, q.y)   // 出る瞬間: 砂ぼこりがぱっと舞い、その中から岩が現れる
       }
       S.rockK.set(q.index, k)
       // 出る前（warn 秒）: 出る所の足もとから、砂ぼこりが細く立ちはじめ、出る時が近づくほど増える（2026-11-10。前は上から小石が落ちていた）
-      const left = (1 - ((S.time / ROCK.period + q.phase) % 1)) * ROCK.period
+      const left = (1 - ((rt / ROCK.period + q.phase) % 1)) * ROCK.period
       if (left < ROCK.warn && Math.random() < dt * (3 + 22 * (1 - left / ROCK.warn))) {
         const side = Math.random() < 0.5 ? -1 : 1
         S.rockDust.push({ x: q.x + side * Math.random() * 8, y: q.y - 1, vx: side * (2 + Math.random() * 8), vy: -(5 + Math.random() * 12), t: 0, life: 0.4 + Math.random() * 0.3, big: left < 0.35 && Math.random() < 0.5 })   // 出る直前は、粒が大きくなる
@@ -759,7 +782,7 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
       S.signsRead.add(S.signNear.id); save()
       return
     }
-    const cause = realm.sky || S.fly ? null : deadly(world, hurtBox(p), S.time) || (p.y > world.h * TILE ? 'fall' : null)
+    const cause = realm.sky || S.fly ? null : deadly(world, hurtBox(p), S.time, S.creatureTime) || (p.y > world.h * TILE ? 'fall' : null)
     if (cause) { S.die(cause); return }
     // 人の道: 施す食べ物に触ると拾う（一度に一つ。渡したものは無い）
     if (realm.folkLook && world.folk?.length) stepFolk(p, dt)
@@ -800,6 +823,7 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
       S.pause = ROOM_PAUSE
       S.camFrom = { ...S.cam }
       S.room = r
+      startRoomClock(r, ROOM_PAUSE)   // カメラが移り終わってから、その部屋の時計が動き出す
       S.light = r.light && S.found.has(r.index) ? 1 : 0   // 見つけた光の部屋は、入ったときから明るい（広がる光は最初の一度だけ）
       S.listen = 0
       S.camT = 0

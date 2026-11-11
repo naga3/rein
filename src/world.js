@@ -55,7 +55,7 @@ export function buildWorld(rooms, { strict = true, realm = 'hell' } = {}) {
       if (c === 'T') tempts.push({ tx: x, ty: y, index: tempts.length, x: x * TILE + TILE / 2, y: (y + 1) * TILE, kind: (x * 3 + y) % 5 })
       if (c === 'B' || c === 'b') signs.push({ tx: x, ty: y, x: x * TILE + TILE / 2, y: (y + 1) * TILE, id: r.signs?.[`${x - r.x},${y - r.y}`] || null, realm, index: signs.length, inRock: c === 'b' })   // id が無い看板は、読めない（エディタの見本など）
       if (c === 'G') gifts.push({ tx: x, ty: y, index: gifts.length, x: x * TILE + TILE / 2, y: (y + 1) * TILE, link: r.gifts?.[`${i},${j}`] || null, home: ri })   // link: 結んだ光の部屋（部屋の gifts: { "x,y": "4-1" }。2026-11-08）
-      if (c === 'E' || c === 'P' || c === 'N') creatures.push({ kind: { E: 'bird', P: 'fish', N: 'snake' }[c], tx: x, ty: y, phase: (x * 0.61 + y * 0.29) % 1 })
+      if (c === 'E' || c === 'P' || c === 'N') creatures.push({ kind: { E: 'bird', P: 'fish', N: 'snake' }[c], tx: x, ty: y, phase: (x * 0.61 + y * 0.29) % 1, ri })   // ri: いる部屋（部屋の時計。game.js の roomTime）
     }))
     return { name: r.name, x: r.x, y: r.y, w: r.rows[0].length, h: r.rows.length, light: !!r.light, no: r.light ? r.no ?? null : null, index: ri, seatAt: r.seat || null, place: r.place || null, buddha: !!r.buddha, donor: !!r.donor, scene: r.scene || null, sariputta: !!r.sariputta, loop: r.loop || null, loopStart: r.loopStart || 0, end: !!r.end }
   })
@@ -154,7 +154,8 @@ export function buildWorld(rooms, { strict = true, realm = 'hell' } = {}) {
       c.range = Math.min(l, r) * TILE
     }
     if (c.kind === 'snake') {
-      const floor = (x) => at(x, c.ty) === K.air && isSolidKind(at(x, c.ty + 1))
+      // 自分の部屋の中だけを這う（2026-11-11。前は床が続けば隣の部屋まで行き、隣の部屋に入った瞬間に、別の部屋の時計で動く蛇に当たることがあった）
+      const floor = (x) => at(x, c.ty) === K.air && isSolidKind(at(x, c.ty + 1)) && roomOf[c.ty * w + x] === c.ri
       let x0 = c.tx, x1 = c.tx
       while (floor(x0 - 1)) x0--
       while (floor(x1 + 1)) x1++
@@ -352,7 +353,8 @@ export function spikeAt(world, box) {
   return null
 }
 
-export function deadly(world, box, time) {
+// time: 世界の時計（噴き出す炎）。ctime: 生き物ごとの時計（c → 秒。部屋に入った時から数える。無ければ time）
+export function deadly(world, box, time, ctime) {
   const tx0 = Math.floor(box.l / TILE), tx1 = Math.floor((box.r - 0.01) / TILE)
   const ty0 = Math.floor(box.t / TILE), ty1 = Math.floor((box.b - 0.01) / TILE)
   const overlap = (l, t, r, b) => box.l < r && box.r > l && box.t < b && box.b > t
@@ -364,7 +366,7 @@ export function deadly(world, box, time) {
     if (spikeHits(k, x, y, overlap)) return 'spike'
   }
   for (const c of world.creatures || []) {
-    const s = creatureAt(c, time)
+    const s = creatureAt(c, ctime ? ctime(c) : time)
     if (!s.danger) continue
     const [hw, hh] = CREATURE_BOX[c.kind]
     if (overlap(s.x - hw, s.y - hh, s.x + hw, s.y + hh)) return c.kind
