@@ -832,6 +832,7 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
     //   畜生（listen）: 法を説く者のすぐそばで、地面に止まってじっと待つ。しばらく何も起きず、そのあと光が満ちて見つける（動くと最初から。謎解き）
     const lr = S.room?.light ? S.room : null
     let target = 0, foundNow = false
+    S.hearing = false
     if (lr && S.found.has(lr.index)) target = 1
     else if (lr?.seat) {
       const d = Math.hypot(p.x - lr.seat.x, p.y - lr.seat.y)
@@ -851,8 +852,13 @@ export function createGame({ maps, rooms, world: given, realm = FIRST_REALM, sta
         foundNow = st.food && b.l < lr.seat.x + 6 && b.r > lr.seat.x - 6 && b.b > lr.seat.y - 10 && b.t < lr.seat.y
       } else if (REALMS[S.realm]?.light === 'listen') {
         const still = p.onGround && !p.climb && Math.abs(p.vx) < 4 && !inp.x && !inp.dash
-        S.listen = still && d <= LISTEN_RANGE ? S.listen + dt : 0
-        S.nearT = d <= LISTEN_RANGE ? S.nearT + dt : 0   // そばに入ってからの時間（声の波紋の 1 本目が、ここから生まれる）
+        // そばで耳を傾けている（2026-11-12。本人の頼み。看板の「近づいて、そばに座る。そばに座って、耳を傾ける」）:
+        //   説く者と同じ床に立ち（足もとの高さの差 4 ドットまで）、真横に LISTEN_RANGE まで、体が重ならず（真ん中が半マス以上離れ）、説く者のほうを向いている。
+        //   背を向けていたり、重なっていたりすると、声の波紋も届かず、光も満ちない
+        const dx = lr.seat.x - p.x
+        S.hearing = p.onGround && !p.climb && Math.abs(p.y - lr.seat.y) <= 4 && Math.abs(dx) >= TILE / 2 && Math.abs(dx) <= LISTEN_RANGE && p.dir === Math.sign(dx)
+        S.listen = still && S.hearing ? S.listen + dt : 0
+        S.nearT = S.hearing ? S.nearT + dt : 0   // 耳を傾けてからの時間（声の波紋の 1 本目が、ここから生まれる）
         target = Math.max(0, Math.min(1, (S.listen - LISTEN_WAIT) / LISTEN_FILL))
         foundNow = S.listen >= LISTEN_WAIT + LISTEN_FILL
       } else {

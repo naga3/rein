@@ -420,7 +420,7 @@ export function makeThings({ px, addLight, text, textW, artPic, artBlit, animFra
       if (realmOf(world).light === 'approach') drawDweller(S.room, lightLv, p, camX, camY)
       else if (realmOf(world).light === 'listen') {
         // 声の波紋: 説く者のそばに入ると 1 本出て、じっと待つ 1 秒ごとに 1 本ずつ増える（待ち終えると光り始める）。聞き終えた所では、いつも 5 本
-        const found = S.found?.has(S.room.index), near = p && !S.dead && Math.hypot(p.x - S.room.seat.x, p.y - S.room.seat.y) <= LISTEN_RANGE
+        const found = S.found?.has(S.room.index), near = p && !S.dead && !!S.hearing   // そばで、説く者のほうを向いて立っているときだけ（game.js の S.hearing）
         // 波紋 k 本目の年: 1 本目はそばに入ってから、2 本目からは待ち始めて k 秒たってから（どれも小さな弧から生まれる）
         const ages = found ? null : near ? [S.nearT ?? 0, ...Array.from({ length: Math.min(LISTEN_WAIT, 1 + Math.floor(S.listen ?? 0)) - 1 }, (_, k) => (S.listen ?? 0) - (k + 1))] : []
         const face = p ? (p.x < S.room.seat.x ? -1 : 1) : -1

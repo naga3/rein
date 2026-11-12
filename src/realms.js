@@ -24,7 +24,7 @@ export function devStartRealm() { try { const v = localStorage.getItem(DEV_REALM
 export const ESCAPE = 5   // 光の部屋（にあたるもの）をこれだけ見つけて死ぬと、次の生は次の道
 // 畜生（謎解き）: 説く者からこの距離（ドット）の中で、動かずに待つ。はじめの LISTEN_WAIT 秒は何も起きず、そのあと LISTEN_FILL 秒で光が満ちて見つける。
 //   動いたり離れたりすると、最初から
-export const LISTEN_RANGE = 48, LISTEN_WAIT = 4, LISTEN_FILL = 2   // LISTEN_WAIT: 2026-11-06 に 5 → 4 秒
+export const LISTEN_RANGE = 48, LISTEN_WAIT = 4, LISTEN_FILL = 1.5   // LISTEN_WAIT: 2026-11-06 に 5 → 4 秒。LISTEN_FILL: 2026-11-12 に 2 → 1.5 秒（光が満ちるのを少し速く）
 // 餓鬼: 供養の食べ物は OFFER_PERIOD 秒ごとに、生きている人が歩いて来て置き、OFFER_SHOW 秒で消える（触れると見つける）
 export const OFFER_PERIOD = 30, OFFER_SHOW = 4, OFFER_WALK = 34, OFFER_KNEEL = 0.8
 // 天: 天女がまく花の数と、まき終えるまで（秒）。浮遊感（重力・落ちる速さ・落ちるときの重さの倍率）
