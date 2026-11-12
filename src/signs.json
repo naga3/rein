@@ -1410,10 +1410,13 @@
     }
   },
   "pv3.4_5": {
-    "note": "餓鬼事 3.4『籾殻の餓鬼の話』451 偈。餓鬼の道「賑わう町」(35, 12)。食べ物が腐る仕掛けの根拠（施しを惜しみ嘘をついた主婦。前の 450 偈はサイトで読める）",
-    "page": "pv3.4/#5",
+    "note": "餓鬼事 3.4『籾殻の餓鬼の話』449〜451 偈（サイトの 3〜5 節）。餓鬼の道「賑わう町」(35, 12)。食べ物が腐る仕掛けの根拠（施しを惜しみ嘘をついた主婦）。2026-11-12 に、何の行い・何の嘘かが分かるよう、前の偈を入れた",
+    "page": "pv3.4/#3",
     "ja": {
       "lines": [
+        "持ち物があるのに隠して、",
+        "「家には無い。あるのに隠しているなら、",
+        "汚物が私の食べ物になればいい」と嘘をついた。",
         "その行いの報いで、",
         "嘘の報いも合わせて、",
         "香りのよい米の飯が、",
@@ -1423,6 +1426,9 @@
     },
     "en": {
       "lines": [
+        "I hid what I had and lied:",
+        "“It is not in the house. If I am hiding it,",
+        "may filth be my food.”",
         "As the result of that deed,",
         "and of the lie as well,",
         "a fragrant meal of rice",
@@ -1432,23 +1438,31 @@
     }
   },
   "pv2.9_274": {
-    "note": "餓鬼事 2.9『アンクラの話』274 偈。餓鬼の道「施しの家の前」(5, 11)。布施人のそば。施しの家への道を、手を挙げて教えた（布施人を光の部屋へ連れて行くヒント）",
-    "page": "pv2.9/#274",
+    "note": "餓鬼事 2.9『アンクラの話』273〜275 偈。餓鬼の道「施しの家の前」(5, 11)。布施人のそば。施しの家への道を、手を挙げて教えた功徳で、手から望むものが出る（布施人を光の部屋へ連れて行くヒント）。2026-11-12 に、誰に教えたか・なぜ大事かが分かるよう、前後の偈を入れた",
+    "page": "pv2.9/#273",
     "ja": {
       "lines": [
+        "「どこで施しが行われているのですか」と、",
+        "物乞いの人たちに尋ねられ、",
         "右の腕を挙げて教えた。",
         "「どうぞ、こちらへお行きなさい。",
         "ここで施しが行われています、",
-        "アサイハの家で」と。"
+        "アサイハの家で」と。",
+        "それで、私の手は望むものを与え、",
+        "蜜を流す。"
       ],
       "source": "餓鬼事 2.9『アンクラの話』"
     },
     "en": {
       "lines": [
+        "Asked by those seeking alms,",
+        "\"Where is the gift being given?\"",
         "I raised my right arm and said,",
         "\"Go this way, good people;",
         "here the gift is given,",
-        "at Asayha's house.\""
+        "at Asayha's house.\"",
+        "So now my hand gives whatever is wished,",
+        "and flows with honey."
       ],
       "source": "Pv 2.9 Aṅkura"
     }
@@ -1640,10 +1654,10 @@
     "page": "kp7/#10",
     "ja": {
       "lines": [
-        "泣いても、悲しんでも、",
-        "そのほかどんなに嘆いても、",
+        "泣くことも、悲しむことも、",
+        "どんな嘆きも、",
         "それは餓鬼たちのためにならない。",
-        "親族は、そのまま変わらずにいる。"
+        "それでも親族は、ただ嘆いたまま立ちつくす。"
       ],
       "source": "小誦 7『壁の外の経』"
     },
@@ -1652,7 +1666,7 @@
         "Weeping, sorrow,",
         "or any other lamentation",
         "does not benefit the departed;",
-        "the relatives remain just as they are."
+        "yet the relatives just stand there grieving."
       ],
       "source": "Khp 7 Outside the Walls"
     }
