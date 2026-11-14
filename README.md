@@ -2,7 +2,7 @@
 
 死に咲き狂う、輪廻アクション。
 
-**遊ぶ: https://naga3.github.io/rein/**
+**遊ぶ: https://naga3.github.io/rein/**（[itch.io](https://naga3.itch.io/rein) でも遊べます）
 
 題名は Re:incarnation（生まれ変わり）、in carnation（カーネーションの中に）、RE:（もう一度）を重ねたもの。読みは「リインカーネーション」。
 
