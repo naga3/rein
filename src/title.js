@@ -169,5 +169,12 @@ export function createTitle(fb, W, H) {
     center(by + bh - 17, foot, P.gy4, P.black)
     return items.map((it, i) => { const w = textW(it.label) + 16, x0 = Math.round((W - w) / 2); return [top + i * LH - 3, top + i * LH + 15, x0, x0 + w] })
   }
-  return { drawTitle, drawList, drawSigns, drawPopup, drawPause }
+  // フォーカスが外れたとき（2026-11-14）: キーが届かないことを、画面の真ん中の帯で知らせる。itch.io などに埋め込むと、最初はページのほうにフォーカスがある
+  function drawFocus(t, msg) {
+    for (let y = 0; y < H; y++) for (let x = (y & 1); x < W; x += 2) fb[y * W + x] = P.black
+    const bh = 30, by = (H - bh) >> 1
+    for (let y = by; y < by + bh; y++) for (let x = 0; x < W; x++) px(x, y, y === by || y === by + bh - 1 ? P.gy2 : P.ink)
+    center(by + 9, msg, Math.floor(t * 1.5) % 2 ? P.white : P.gy4, P.black)
+  }
+  return { drawTitle, drawList, drawSigns, drawPopup, drawPause, drawFocus }
 }

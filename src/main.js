@@ -119,8 +119,13 @@ addEventListener('keydown', (e) => {
   menu.onKey(e)
 })
 const toScreen = (e) => { const b = canvas.getBoundingClientRect(); return [((e.clientX - b.left) / b.width) * W, ((e.clientY - b.top) / b.height) * H] }
-canvas.addEventListener('click', (e) => menu.onClick(...toScreen(e)))
-canvas.addEventListener('pointerdown', (e) => menu.onPointerDown(...toScreen(e)))
+// フォーカス（2026-11-14）: itch.io などに埋め込むと、最初はページのほうにフォーカスがあって、キーが届かない。外れている間は「クリックすると、キーで遊べます」を出し、遊んでいたらポーズ。
+//   外れているときのクリックは、フォーカスを戻すだけ（タイトルの項目を選んだりしない）。スマホ（指の操作）では出さない
+let focusClick = false
+const unfocused = () => !document.hasFocus() && !touch.active()
+addEventListener('blur', () => { if (!touch.active()) menu.pause() })
+canvas.addEventListener('pointerdown', (e) => { focusClick = unfocused(); if (!focusClick) menu.onPointerDown(...toScreen(e)) })
+canvas.addEventListener('click', (e) => { if (focusClick) { focusClick = false; return } menu.onClick(...toScreen(e)) })
 
 // デバッグ: ?at= の場所から始める（その道を開き、そのマスの下の床に立つ。溶岩や針の上には立たない。床が無ければそのマスに）
 // 道のどこかへ飛ぶ（デバッグ）: その道を始めから作り、マス（tx, ty）の近くの立てる所へ。岩の中なら上の空いたマスへ
@@ -174,6 +179,7 @@ const frame = (now) => {
   S.touchUi = touch.active()   // 看板の窓の案内を、スマホの操作で書く
   if (menu.mode === 'play') { renderer.draw(S, t); picker?.draw(fb, t, 1 / 60) }
   else menu.draw(t)
+  if (unfocused()) menu.drawFocus(t)
   renderer.present(out32, PAL32, menu.mode === 'play')   // 光の層を足す（炎の照り返しなど。パレットに縛られない）。遊ぶ画面のときだけ
   ctx.putImageData(img, 0, 0)
   touch.setAlt(menu.mode !== 'play' || !!S.reading, S.reading || menu.windowOpen() ? tr.padClose : tr.padOk)   // タイトル・記録・看板の一覧では右側のボタンの字を「決定」、看板の窓では「閉じる」に

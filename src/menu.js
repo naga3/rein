@@ -204,6 +204,7 @@ export function createMenu({ fb, renderer, game, hasSave, sfx = () => {} }) {
   return {
     get mode() { return mode }, set mode(m) { mode = m },
     step, draw, onKey, onClick, onPointerDown, pause,
+    drawFocus: (t) => title.drawFocus(t, tr.focusHint),
     windowOpen: () => !!reading,   // 看板の一覧から開いた窓が出ているか（スマホの右側のボタンの字を「閉じる」に）
   }
 }
