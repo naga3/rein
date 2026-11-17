@@ -9,3 +9,6 @@ art/ref/
 zz-*
 **/zz-*
 itch/
+# 録った操作と、そこから作った動画（2026-11-14。src/rec.js・tools/video.mjs）
+rec/
+video/

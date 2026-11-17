@@ -35,6 +35,26 @@ const mapFiles = () => ({
       }
       res.statusCode = 405; res.end()
     })
+    // 録った操作（src/rec.js。開発中だけ。2026-11-14）: POST・GET /__rec/<名前> で rec/<名前>.json
+    server.middlewares.use('/__rec/', (req, res) => {
+      const name = decodeURIComponent(req.url.replace(/^\//, '').split('?')[0])
+      if (!/^[0-9A-Za-z_-]+$/.test(name)) { res.statusCode = 400; return res.end('bad name') }
+      const file = path.resolve('rec', `${name}.json`)
+      if (req.method === 'GET') {
+        if (!fs.existsSync(file)) { res.statusCode = 404; return res.end('not found') }
+        res.setHeader('content-type', 'application/json')
+        return res.end(fs.readFileSync(file))
+      }
+      if (req.method === 'POST') {
+        let body = ''
+        req.on('data', (c) => (body += c))
+        req.on('end', () => {
+          try { JSON.parse(body); fs.mkdirSync('rec', { recursive: true }); fs.writeFileSync(file, body); res.end('ok') } catch (e) { res.statusCode = 400; res.end(String(e.message)) }
+        })
+        return
+      }
+      res.statusCode = 405; res.end()
+    })
     server.middlewares.use('/__map/', (req, res) => {
       const name = decodeURIComponent(req.url.replace(/^\//, '').split('?')[0])
       if (!/^[a-z0-9-]+$/.test(name)) { res.statusCode = 400; return res.end('bad name') }

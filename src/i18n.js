@@ -49,6 +49,7 @@ const TEXT = {
     wipeShort: '記録を消す', debugShort: 'デバッグ', pauseShort: 'ポーズ', pauseHead: 'ポーズ', pauseResume: 'つづける', pauseDie: 'この生を終える', pauseTitle: 'タイトルへ', pauseHint: '↑↓：選ぶ　Z：決める　Esc：つづける', pauseHintTouch: 'タップで選ぶ', debugClose: '閉じる', focusHint: '画面をクリックすると、キーで遊べます',
     complete: '看板・光の部屋を全部',
     freeLoop: '渇愛を尽きさせる',
+    rec: '録画', recOn: '● 録画中（押して保存）', recSaving: '保存しています…', recSaved: (n, sec) => `保存した: rec/${n}.json（${sec} 秒）`, recFail: '保存できなかった',
     pick: '場所をコピー（C）', pickShort: '場所をコピー', pickHint: 'クリック：1 マス　なぞる：範囲　Esc：やめる', pickHintTouch: 'なぞると範囲　離すとコピー', copied: 'コピーした', fly: '飛ぶ（F）', flyShort: '飛ぶ', flying: '飛ぶ：入（F で切る）', flyingTouch: '飛ぶ：入',
   },
   en: {
@@ -86,6 +87,7 @@ const TEXT = {
     wipeShort: 'Erase record', debugShort: 'Debug', pauseShort: 'Pause', pauseHead: 'Pause', pauseResume: 'Continue', pauseDie: 'End this life', pauseTitle: 'Back to title', pauseHint: 'Up/Down: choose   Z: select   Esc: continue', pauseHintTouch: 'Tap to choose', debugClose: 'Close', focusHint: 'Click the screen to play with the keys',
     complete: 'Complete signs & lights',
     freeLoop: 'End craving',
+    rec: 'Record', recOn: '● Recording (click to save)', recSaving: 'Saving…', recSaved: (n, sec) => `Saved: rec/${n}.json (${sec} s)`, recFail: 'Could not save',
     pick: 'Copy place (C)', pickShort: 'Copy place', pickHint: 'Click: one tile  Drag: area  Esc: cancel', pickHintTouch: 'Drag for an area, lift to copy', copied: 'Copied', fly: 'Fly (F)', flyShort: 'Fly', flying: 'Fly: ON (F to stop)', flyingTouch: 'Fly: ON',
   },
 }
